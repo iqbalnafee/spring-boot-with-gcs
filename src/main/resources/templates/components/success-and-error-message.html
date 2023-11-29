@@ -1,0 +1,48 @@
+<!--<div th:if="${successMessage != null}" id="success_message_div" class="alert alert-custom alert-success fade show mb-0"-->
+<!--     role="alert" style="padding: 0.75rem 1.25rem !important; margin-bottom: -5px;">-->
+<!--    <div class="alert-icon">-->
+<!--        <i class="flaticon-like"></i>-->
+<!--    </div>-->
+<!--    <div class="alert-text"-->
+<!--         th:text="${#strings.isEmpty(#messages.msgOrNull(successMessage)) ? successMessage : #messages.msg(successMessage)}">-->
+<!--        Success-->
+<!--    </div>-->
+<!--    <div class="alert-close">-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">-->
+<!--                <i class="ki ki-close"></i>-->
+<!--            </span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div th:if="${not #strings.isEmpty(errorMessage)}" class="alert alert-custom alert-danger fade show mb-0" role="alert"-->
+<!--     style="padding: 0.75rem 1.25rem !important; margin-bottom: -5px;">-->
+<!--    <div class="alert-icon">-->
+<!--        <i class="flaticon-warning"></i>-->
+<!--    </div>-->
+<!--    <div class="alert-text"-->
+<!--         th:text="${#strings.isEmpty(#messages.msgOrNull(errorMessage)) ? errorMessage : #messages.msg(errorMessage)}"-->
+<!--    >-->
+<!--        Error!-->
+<!--    </div>-->
+<!--    <div class="alert-close">-->
+<!--        <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--            <span aria-hidden="true">-->
+<!--                <i class="ki ki-close"></i>-->
+<!--            </span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    console.log('****************');-->
+<!--    let errorMessage = [[${errorMessage == null ? false : errorMessage}]];-->
+<!--    console.log('errorMessage : '+errorMessage);-->
+<!--    if(errorMessage){-->
+<!--        CustomToast.errorToast(errorMessage);-->
+<!--    }-->
+<!--    if (document.getElementById('success_message_div') != null) {-->
+<!--        setTimeout(() => document.getElementById('success_message_div').remove(), 7000);-->
+<!--    }-->
+<!--</script>-->

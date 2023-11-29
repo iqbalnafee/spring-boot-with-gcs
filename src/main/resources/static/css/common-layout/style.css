@@ -1,0 +1,714 @@
+@import url("https://fonts.maateen.me/solaiman-lipi/font.css");
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;300;400;500;600;700;800&display=swap');
+
+:root {
+    --body-font: "Encode Sans", "SolaimanLipi", sans-serif;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.9rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--body-font) !important;
+    font-size: var(--normal-font-size);
+    font-weight: 500;
+}
+
+.form-control {
+    border: 1px solid #C2C2C2;
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+/*for side menu scrollbar*/
+.aside .aside-menu.ps > .ps__rail-y > .ps__thumb-y {
+    background: #fff !important;
+}
+
+.brand {
+    padding: 1rem .6rem;
+}
+
+
+.select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--single {
+    border: 1px solid #C2C2C2;
+}
+
+.error-message-div {
+    margin-bottom: 10px;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: none;
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    background-image: none;
+}
+
+#kt_aside_toggle {
+    padding: 0px !important;
+}
+
+.table-title-color, .section-title {
+    color: #07456a;
+    font-weight: 600;
+}
+
+#kt_page_sticky_card > .card-header {
+    background: #f2f6fb;
+}
+
+#kt_page_sticky_card > .card-header .card-title .card-label {
+    color: #07456a !important;
+    font-weight: bold;
+}
+
+.brand .btn .svg-icon svg g [fill] {
+    fill: #fff !important;
+}
+
+.table-responsive > .table-bordered {
+    border: 1px solid #E4E6EF !important;
+}
+
+/*for side menu modification*/
+
+/*full side menu background color*/
+.aside-menu {
+    background-color: #08923b;
+}
+
+/*menu text padding*/
+.aside-menu .menu-nav > .menu-item > .menu-link {
+    padding: 15px;
+    border-radius: 7px;
+}
+
+/*sub menu text padding*/
+.aside-menu .menu-nav > .menu-item > .menu-submenu .menu-subnav > .menu-item > .menu-link {
+    padding: 15px 25px 15px 30px;
+}
+
+/*child menu text padding*/
+.aside-menu .menu-nav > .menu-item > .menu-submenu .menu-subnav > .menu-item > .menu-submenu .menu-subnav > .menu-item > .menu-link {
+    padding: 15px 25px 15px 55px;
+    margin: 0 0 .15rem 0;
+    border-radius: 7px;
+}
+
+/*..........................................................full side menu text color...............................................................*/
+
+/*all module text color*/
+.aside-menu .menu-nav > .menu-item > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item > .menu-link .menu-text {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.12rem;
+}
+
+/*all module bg color*/
+.aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover {
+    background: #13882C !important;
+}
+
+/*all dropdown arrow color*/
+.aside-menu .menu-nav > .menu-item > .menu-heading .menu-arrow, .aside-menu .menu-nav > .menu-item > .menu-link .menu-arrow {
+    color: #ffffff;
+}
+
+/*-------------Start: Module-----------------*/
+/*icon*/
+.aside-menu .menu-nav > .menu-item > .menu-heading .menu-icon.svg-icon svg g [fill], .aside-menu .menu-nav > .menu-item > .menu-link .menu-icon.svg-icon svg g [fill] {
+    fill: #ffffff;
+}
+
+/*icon on module hover*/
+.aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-icon.svg-icon svg g [fill],
+.aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-icon.svg-icon svg g [fill] {
+    fill: #ffffff;
+}
+
+/*icon on module focused*/
+.aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading .menu-icon.svg-icon svg g [fill], .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link .menu-icon.svg-icon svg g [fill] {
+    fill: #ffffff;
+}
+
+/*module background on hover*/
+.aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading,
+.aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link {
+    background-color: #127302;
+}
+
+/*module background on focused*/
+.aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link {
+    background-color: #0C5B00;
+    margin: 0 0 .15rem 0;
+}
+
+.aside-menu .menu-nav > .menu-item.menu-item-here > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-here > .menu-link {
+    background-color: #0C5B00;
+    margin: 0 0 .15rem 0;
+}
+
+/*-------------End: Module-----------------*/
+
+/*-------------Start: Submenu-----------------*/
+
+/*right arrow icon color*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-heading .menu-arrow, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-link .menu-arrow {
+    color: #fff;
+}
+
+/*dot icon bg color*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-heading .menu-bullet.menu-bullet-dot > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-bullet.menu-bullet-dot > span {
+    background-color: #fff;
+}
+
+/*dot icon bg color on hover*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-bullet.menu-bullet-dot > span,
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-bullet.menu-bullet-dot > span {
+    background-color: #fff;
+}
+
+
+/*dot icon bg color on active*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-heading .menu-bullet.menu-bullet-dot > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-link .menu-bullet.menu-bullet-dot > span {
+    background-color: #fff;
+}
+
+/*submenu text color*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-text {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.12rem;
+}
+
+/*submenu text color on hover*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-text,
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-text {
+    color: #fff;
+}
+
+/*submenu text color on focused*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-heading .menu-text,
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-link .menu-text {
+    color: #fff;
+}
+
+/*submenu background*/
+.aside-menu .menu-nav .menu-item.menu-item-open > .menu-inner, .aside-menu .menu-nav .menu-item.menu-item-open > .menu-submenu {
+    background: #08923b;
+}
+
+/*submenu background on hover*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading,
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link {
+    background-color: #127302;
+}
+
+/*submenu background on focused*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-heading,
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-link {
+    background-color: #0C5B00;
+    border-radius: 7px;
+}
+
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-active > .menu-heading, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-active > .menu-link {
+    background-color: #0C5B00;
+    border-radius: 7px;
+}
+
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-active > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-active > .menu-link .menu-text {
+    color: #fff;
+}
+
+/*-------------End: Submenu-----------------*/
+
+/*-------------Start: Child-----------------*/
+
+/*arrow icon color*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-heading .menu-arrow:before, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-arrow:before {
+    color: #fff;
+}
+
+/*arrow icon color on focus*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-heading .menu-bullet.menu-bullet-line > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-link .menu-bullet.menu-bullet-line > span {
+    background-color: #fff;
+}
+
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-heading .menu-bullet.menu-bullet-line > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-link .menu-bullet.menu-bullet-line > span {
+    background-color: #fff;
+}
+
+/*dot icon bg color*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-heading .menu-bullet.menu-bullet-line > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-bullet.menu-bullet-line > span {
+    background: #fff;
+}
+
+/*dot icon bg color on hover*/
+
+/*dot icon bg color on active*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-active > .menu-heading .menu-bullet.menu-bullet-dot > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-active > .menu-link .menu-bullet.menu-bullet-dot > span {
+    background-color: #fff;
+}
+
+/*child menu text*/
+.aside-menu .menu-nav > .menu-item > .menu-submenu .menu-subnav > .menu-item > .menu-submenu .menu-subnav > .menu-item .menu-submenu .menu-item > .menu-link .menu-text {
+    color: #fff;
+    font-weight: 600;
+}
+
+/*child menu text on hover*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-text {
+    color: #fff;
+}
+
+/*child menu text on focused*/
+
+/*child menu bg*/
+.aside-menu .menu-nav > .menu-item > .menu-submenu .menu-subnav > .menu-item > .menu-submenu .menu-subnav {
+    background: #08923b;
+}
+
+/*child menu bg on hover*/
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link {
+    /*background-color: #66CE7B;*/
+    border-radius: 7px;
+}
+
+/*child menu bg on focused*/
+
+/*submenu bg on child menu close */
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-heading, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-link {
+    background: #0C5B00;
+    margin: 0 0 .15rem 0;
+    border-radius: 7px;
+}
+
+/*submenu's right arrow on child menu close */
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-heading .menu-arrow, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-here > .menu-link .menu-arrow {
+    color: #fff;
+}
+
+
+/*file upload for NBR*/
+
+.uploader-text {
+    color: #323233;
+}
+
+.browse-text {
+    color: #0EABDE;
+    text-underline-position: under;
+    text-decoration-color: #0EABDE;
+}
+
+
+/*-------------End: Child-----------------*/
+
+/*-------------Grandchild: Module-----------------*/
+
+/*-------------Grandchild: Module-----------------*/
+
+.d-flex.flex-column.flex-root {
+    margin-bottom: -16px;
+}
+
+
+/*for custom data table in search page*/
+
+.custom-data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.custom-data-table thead tr {
+    background: #dbecff;
+    color: #0072ea;
+}
+
+table.custom-data-table td, .table th {
+    vertical-align: middle;
+    padding: 1.3rem;
+}
+
+.custom-data-table.table thead th {
+    vertical-align: top;
+}
+
+table.custom-data-table.dataTable > thead > tr > td:not(.sorting_disabled), table.dataTable > thead > tr > th:not(.sorting_disabled) {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+table.custom-data-table.table-bordered.dataTable tbody td {
+    font-weight: 500;
+    color: #323233;
+}
+
+/*footer getting top issue fixed*/
+.d-flex.flex-column.flex-root {
+    height: 100% !important;
+}
+
+.cropper-container {
+    margin: 0 auto 20px auto;
+}
+
+.modal-header.modal-header-bg {
+    background: #f2f6fb;
+}
+
+.modal-header.modal-header-bg .modal-title {
+    color: #07456a;
+    font-weight: 600;
+}
+
+.address-preview-field,
+.large-text-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 991.98px) {
+    .header-mobile {
+        background-color: #0C5B00;
+    }
+
+    .header-mobile .burger-icon span,
+    .header-mobile .burger-icon span::before,
+    .header-mobile .burger-icon span::after,
+    .header-mobile .burger-icon span::before,
+    .header-mobile .burger-icon span::after {
+        background-color: #ffffff;
+    }
+
+    .header-mobile .burger-icon span:hover {
+        background: #3699ff !important;
+    }
+
+    .header-mobile .btn .svg-icon svg g [fill] {
+        fill: #ffffff;
+        opacity: 1;
+    }
+
+    .card.card-custom {
+        margin-top: 1rem;
+    }
+}
+
+/*for repatign section divider*/
+.repeating-section-divider {
+    height: 11px;
+    border-radius: 3px;
+    background: linear-gradient(-45deg, #c5cae9, #b2dfdb);
+    margin-bottom: 2rem;
+}
+
+
+/*-------------start: Notification section scrollbar-----------*/
+
+.scroll.ps > .ps__rail-y > .ps__thumb-y {
+    background: #999 !important;
+    width: 6px !important;
+}
+
+.ps__thumb-y {
+    right: -2px !important;
+}
+
+/*-------------end: Notification section scrollbar-----------*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/*-------------end-----------*/
+
+.aside-menu .menu-nav {
+    padding: 15px 7px;
+}
+
+
+/*-------------start: How to hide the eye from a password input in MS Edge and IE-----------*/
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+/*-------------end: How to hide the eye from a password input in MS Edge and IE-----------*/
+
+/*-------------start: style for invalid feedback-----------*/
+.form-group .invalid-feedback, .form-group .valid-feedback {
+    font-weight: 500;
+    /*margin-top: -25px;*/
+    /*margin-left: 2px;*/
+    position: absolute;
+    top: 45px;
+    left: 15px;
+}
+
+/*-------------end: style for invalid feedback-----------*/
+
+/*-------------start: custom header title for co-efficient-----------*/
+.custom-card-title {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card.card-custom > .card-header .card-title small {
+    color: #717171;
+}
+
+/*-------------end: custom header title for co-efficient-----------*/
+
+/*-------------start: date picker related css-----------*/
+
+.form__div:has(.date-picker-container) {
+    height: auto;
+}
+
+.date-picker-input-field {
+    border-color: #C2C2C2;
+}
+
+.date-picker-container {
+    margin-top: -30px;
+    margin-bottom: 2rem;
+}
+
+.datepicker-orient-bottom {
+    top: 262px !important;
+}
+
+.datepicker table td, .datepicker table th, .datetimepicker table td, .datetimepicker table th {
+    font-family: var(--body-font) !important;
+}
+
+.datepicker table td {
+    font-weight: 500 !important;
+}
+
+.datepicker table th {
+    font-weight: 600 !important
+}
+
+/*-------------end: date picker related css-----------*/
+
+/*-------------start: top navbar related css-----------*/
+/*.header.header-fixed{*/
+/*    z-index: 1100;*/
+/*}*/
+/*-------------end: top navbar related css-----------*/
+
+/*-------------end:  for tinymece editor header-----------*/
+/*.tox.tox-tinymce--toolbar-sticky-on .tox-editor-header {*/
+/*    position: -webkit-sticky !important;*/
+/*    position: sticky !important;*/
+/*    top: 0 !important;*/
+/*}*/
+
+/*div.tox.tox-tinymce--toolbar-sticky-on div.tox-editor-container {*/
+/*    padding-top: 0 !important;*/
+/*}*/
+
+/*.tox-tinymce-aux {*/
+/*    z-index: 4 !important;*/
+/*}*/
+
+/*-------------end: for tinymece editor header-----------*/
+
+/*-------------end:  for avoid readonly-----------*/
+.custom-readonly {
+    pointer-events: none;
+}
+
+/*-------------end: for avoid readonly-----------*/
+
+/*-------------end:  for custom textarea component-----------*/
+
+.form__div:has(.form__div) {
+    height: auto;
+}
+
+.form__div.form__div--textarea {
+    height: 66px;
+}
+
+/*-------------end: for custom textarea component-----------*/
+
+/*-------------end:  for custom file chooser component-----------*/
+.allowedTypes-label {
+    position: absolute;
+    margin-top: -25px;
+}
+
+/*-------------end: for custom file chooser component-----------*/
+
+/*-------------start:  for table top scrollbar-----------*/
+
+.custom-data-table-wrapper1,
+.custom-data-table-wrapper2 {
+    width: 100%;
+    overflow: auto;
+}
+
+.custom-data-table-wrapper1 {
+    background: #fff;
+    height: 17px;
+    display: none;
+}
+
+.custom-data-table-wrapper2::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.custom-data-table-wrapper2 {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+
+.custom-data-table-top-scrollbar {
+    width: 100%;
+    height: 17px;
+}
+
+.custom-data-table {
+    width: 100%;
+    background-color: #fcfcfc;
+}
+
+.custom-data-table-wrapper1.sticky-top {
+    top: 125px !important;
+    z-index: 89;
+}
+
+/*@media (min-width: 768px) {*/
+/*    .custom-data-table-wrapper1 {*/
+/*        display: block;*/
+/*    }*/
+
+/*    .custom-data-table-wrapper1.sticky-top {*/
+/*        top: 123px !important;*/
+/*    }*/
+/*}*/
+
+@media (min-width: 992px) {
+    .custom-data-table-wrapper1 {
+        display: block;
+    }
+
+    .custom-data-table-wrapper1.sticky-top {
+        top: 135px !important;
+    }
+}
+
+/*-------------end: for table top scrollbar-----------*/
+
+/*-------------start:  multi select height issue solved-----------*/
+
+.form__div:has(.multi-select-container) {
+    height: auto;
+}
+
+/*-------------end: multi select height issue solved-----------*/
+
+/*-------------start:  css for select2-----------*/
+.select2-dropdown {
+    z-index: 90;
+}
+
+.modal-open .select2-dropdown {
+    z-index: 10060;
+}
+
+.modal.show .select2-dropdown {
+    z-index: 1051;
+}
+
+/*-------------end: css for select2-----------*/
+
+/*-------------start: invalid input class only for co-efficient table-----------*/
+
+.invalid-input-border {
+    border: 1px solid #f64e60 !important;
+}
+
+.invalid-input-border:focus + .form__label {
+    color: #f64e60 !important;
+}
+
+/*-------------end:invalid input class only for co-efficient table-----------*/
+
+.toast {
+    opacity: 1 !important;
+}
+
+
+.layout-less-page-content-card {
+    position: absolute;
+    inset: 1rem;
+    width: 93%;
+}
+
+@media (376px <= width <= 575px) {
+    .layout-less-page-content-card {
+        width: 95%;
+    }
+}
+
+@media (576px <= width <= 767px) {
+    .layout-less-page-content-card {
+        width: 96%;
+    }
+}
+
+@media (768px <= width <= 991px) {
+    .layout-less-page-content-card {
+        width: 96.5%;
+    }
+}
+
+@media (992px <= width <= 1199px) {
+    .layout-less-page-content-card {
+        width: 97.5%;
+    }
+}
+
+@media (1200px <= width <= 1399px) {
+    .layout-less-page-content-card {
+        width: 98%;
+    }
+}
+
+@media (1400px <= width <= 1599px) {
+    .layout-less-page-content-card {
+        width: 98.3%;
+    }
+}
+
+@media (1600px <= width <= 1799px) {
+    .layout-less-page-content-card {
+        width: 98.3%;
+    }
+}
+
+@media (1800px <= width) {
+    .layout-less-page-content-card {
+        width: 98.5%;
+    }
+}

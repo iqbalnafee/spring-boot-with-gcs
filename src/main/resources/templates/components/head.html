@@ -1,0 +1,71 @@
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1"/>
+    <title th:text="#{ ${ pageTitle != null? pageTitle : '' } }"> _Blank_ </title>
+    <link rel="shortcut icon"
+          th:href="@{{defaultSuccessURL}/metronic/assets/media/logos/b3_logo_1.png(defaultSuccessURL=${defaultSuccessUrl})}"/>
+
+    <!--begin::Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <!--end::Fonts-->
+
+
+
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link th:href="@{{defaultSuccessURL}/metronic/assets/plugins/global/plugins.bundle.min.css(defaultSuccessURL=${defaultSuccessUrl})}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{{defaultSuccessURL}/metronic/assets/plugins/custom/prismjs/prismjs.bundle.min.css(defaultSuccessURL=${defaultSuccessUrl})}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{{defaultSuccessURL}/metronic/assets/css/style.bundle.min.css(defaultSuccessURL=${defaultSuccessUrl})}"
+          rel="stylesheet" type="text/css"/>
+    <!--end::Global Theme Styles-->
+
+    <!--begin::Layout Themes(used by all pages)-->
+    <link th:href="@{{defaultSuccessURL}/metronic/assets/css/themes/layout/brand/dark.css(defaultSuccessURL=${defaultSuccessUrl})}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{{defaultSuccessURL}/metronic/assets/css/themes/layout/aside/dark.css(defaultSuccessURL=${defaultSuccessUrl})}"
+          rel="stylesheet" type="text/css"/>
+    <!--end::Layout Themes-->
+
+    <!--custom general css-->
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/jquery-ui.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/normalize.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/custom_input-style.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/custom_select_style.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/custom_date_picker_style.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/button-style/button-style.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/info-box/info-box.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/badges/badges.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/boundary-profile/bonder_profile_style.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/verification-tag/verification-tags.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/time-picker/time-picker.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/signature-view.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/custom-title-design.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/common-layout/style.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{{defaultSuccessURL}/css/session-timeout.css(defaultSuccessURL=${defaultSuccessUrl})}"/>
+
+
+
+    <th:block th:replace="css/custom_style.html"></th:block>
+
+
+</head>

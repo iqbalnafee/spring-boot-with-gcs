@@ -1,0 +1,10 @@
+.signature-image {
+    border-bottom: 1px solid #a406dc !important;
+    width: 130px !important;
+    height: 42px !important;
+}
+
+.signature-div * {
+    color: #a406dc;
+    font-size: 10px !important;
+}

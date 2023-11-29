@@ -1,0 +1,20 @@
+.date-picker-input-field {
+    height: 48px;
+}
+
+.date-picker-input-label {
+    position: relative;
+    top: 19px;
+    left: 10px;
+    padding: 3px 5px;
+    font-size: 0.9rem !important;
+    background: #fff;
+}
+
+.input-group-addon {
+    /*display: flex;*/
+    /*justify-content: end;*/
+    /*margin-right: 13px;*/
+    /*position: relative;*/
+    /*top: -31px;*/
+}

@@ -1,0 +1,16 @@
+<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper"
+     th:with="Menu=${ T( com.example.bambergBeverageBox.enums.Menu ) }" style="background: #08923b">
+    <!--begin::Menu Container-->
+    <div id="kt_aside_menu" class="aside-menu scroll" data-menu-vertical="1" data-menu-scroll="1"
+         data-menu-dropdown-timeout="500" style="overflow: auto; height: 100%">
+        <!--begin::Menu Nav-->
+        <ul class="menu-nav">
+
+            <th:block th:replace="components/menu/beverage-menu"></th:block>
+
+        </ul>
+        <!--end::Menu Nav-->
+
+    </div>
+    <!--end::Menu Container-->
+</div>

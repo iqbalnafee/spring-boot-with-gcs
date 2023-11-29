@@ -1,0 +1,9 @@
+<th:block th:fragment="root-node">
+    <a href="javascript:;" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <img class="menu-logo" th:src="@{/images/side-menu-icons/icon_dia_1.svg}" alt=""/>
+        </span>
+        <span class="menu-text" th:text="${menuName}">First Menu</span>
+        <i class="menu-arrow"></i>
+    </a>
+</th:block>

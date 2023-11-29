@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<th:block th:replace="components/head"></th:block>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body"
+      class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+<!--begin::Main-->
+
+
+<div class="page-loader page-loader-hidden">
+    <div class="page-loader-circle"></div>
+    <div class="page-loader-circle"></div>
+    <div class="page-loader-circle"></div>
+</div>
+
+<div class="d-flex flex-column flex-root">
+
+    <!--begin::Page-->
+    <div id="uniqueFullPageContent" class="d-flex flex-row flex-column-fluid page">
+        <!--begin::Aside-->
+        <th:block th:replace="components/aside"></th:block>
+        <!--end::Aside-->
+
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+
+            <!--begin::Header-->
+            <th:block th:replace="components/nav-header"></th:block>
+            <!--end::Header-->
+
+            <!--begin::Content-->
+            <div class="content d-flex flex-column flex-column-fluid" style="padding-top: 0" id="kt_content">
+
+
+                <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+
+                        <!--begin::SuccessErrorMsg-->
+                        <th:block th:replace="components/success-and-error-message"></th:block>
+                        <!--end::SuccessErrorMsg-->
+
+
+                        <!--begin::Content-->
+                        <th:block th:replace="${content}"></th:block>
+                        <!--end::Content-->
+
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Entry-->
+
+            </div>
+            <!--end::Content-->
+
+            <!--begin::Footer-->
+            <th:block th:replace="components/footer"></th:block>
+            <!--end::Footer-->
+
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+</div>
+<!--end::Main-->
+
+<!-- begin::User Panel-->
+<th:block th:replace="components/user-panel"></th:block>
+<!-- end::User Panel-->
+
+<th:block th:replace="components/footer-js"></th:block>
+
+
+
+
+</body>
+<!--end::Body-->
+</html>
+
+

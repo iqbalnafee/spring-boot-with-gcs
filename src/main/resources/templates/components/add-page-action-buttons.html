@@ -1,0 +1,25 @@
+<div class="card-toolbar" th:fragment="action_buttons">
+
+    <!--<button class="btn btn-secondary" type="button" onclick="history.back()">
+        <i class="icon-xl fas fa-arrow-left icon-1x"></i>
+        [[#{label.common.back_button}]]
+    </button>
+-->
+    &nbsp;
+
+    <button th:if="${hideResetBtn == null || hideResetBtn == false}"
+            class="btn btn-secondary" type="button" th:onclick="resetForm( [[ ${formId} ]] )"
+            th:title="#{'label.common.reset_button'}">
+        <i class="icon-xl fas fa-undo icon-1x"></i>
+        [[#{label.common.reset_button}]]
+    </button>
+
+    &nbsp;
+
+    <button class="btn btn-success mr-2" type="submit"
+            th:title="#{'label.common.submit_button'}">
+        <i class="icon-xl fab fa-telegram-plane icon-1x"></i>
+        [[#{label.common.submit_button}]]
+    </button>
+
+</div>

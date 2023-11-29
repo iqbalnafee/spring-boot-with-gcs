@@ -1,0 +1,20 @@
+[data-title] {
+    cursor: pointer;
+}
+.custom-tooltip {
+    content: attr(data-title);
+    color: #fff;
+    font-size: 90%;
+    padding: 0.2rem 0.6rem;
+    white-space: nowrap;
+    z-index: 999999;
+    border-radius: 20px;
+    background: rgba(135, 135, 135, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.1s ease 0.5s;
+    position: fixed;
+    display: none;
+}
