@@ -1,0 +1,321 @@
+.custom-btn {
+    height: 48px;
+    padding: 0 2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap;
+    transition: background 0.3s, color 0.3s;
+}
+
+.custom-btn:disabled {
+    opacity: .5;
+}
+
+.custom-btn:focus {
+    outline: none;
+}
+
+.blue-filled-btn {
+    background: #0072ea;
+    color: #fff;
+}
+
+.blue-filled-btn:hover {
+    background: #0056b0;
+}
+
+.blue-filled-btn:active {
+    background: #003975;
+}
+
+.blue-transparent-btn {
+    background: #e6f1fd;
+    color: #0072ea;
+    border: 1px solid #0072ea;
+}
+
+.blue-transparent-btn:hover {
+    background: #cce3fb;
+}
+
+.blue-transparent-btn:active {
+    background: #99c7f7;
+}
+
+.blue-transparent-btn2 {
+    background: #fff;
+    color: #0072ea;
+    border: 1px solid #0072ea;
+}
+
+.blue-transparent-btn2:hover {
+    background: #e6f1fd;
+}
+
+.blue-transparent-btn2:active {
+    background: #99c7f7;
+}
+
+.blue-transparent-btn3 {
+    background: #e6f1fd;
+    color: #0072ea;
+    border: 1px solid #0072ea;
+}
+
+.blue-transparent-btn3:hover {
+    background: #0072ea;
+    color: #fff;
+}
+
+.blue-transparent-btn3:active {
+    background: #0072ea;
+    color: #fff;
+}
+
+.blue-transparent-btn3-active {
+    background: #0072ea;
+    color: #fff;
+}
+
+.green-transparent-btn {
+    background: #f2fff4;
+    color: #13882c;
+    border: 1px solid #0ca143;
+}
+
+.green-transparent-btn:hover {
+    background: #c3f7c8;
+}
+
+.green-transparent-btn:active {
+    background: #97e399;
+}
+
+.green-transparent-btn3 {
+    background: #f2fff4;
+    color: #13882c;
+    border: 1px solid #0ca143;
+}
+
+.green-transparent-btn3:hover {
+    background: #13882c;
+    color: #fff;
+}
+
+.green-transparent-btn3:active {
+    background: #13882c;
+    color: #fff;
+}
+
+.green-transparent-btn3-active {
+    background: #13882c;
+    color: #fff;
+}
+
+.green-filled-btn {
+    background: #0ca143;
+    color: #fff;
+}
+
+.green-filled-btn:hover {
+    background: #13882c;
+}
+
+.green-filled-btn:active {
+    background: #127302;
+}
+
+.green-transparent-btn2 {
+    background: #ffffff;
+    color: #13882c;
+    border: 1px solid #0ca143;
+}
+
+.green-transparent-btn2:hover {
+    background: #f2fff4;
+}
+
+.green-transparent-btn2:active {
+    background: #97e399;
+}
+
+.red-transparent-btn {
+    background: #ffdce3;
+    color: #dc143c;
+    border: 1px solid #dc140f;
+}
+
+.red-transparent-btn:hover {
+    background: #dc143c;
+    color: #fff;
+}
+
+.red-transparent-btn:active {
+    background: #dc140f;
+    color: #fff;
+}
+
+.red-transparent-btn-active {
+    background: #dc140f;
+    color: #fff;
+}
+
+.red-filled-btn {
+    background: #dc143c;
+    color: #fff;
+}
+
+.red-filled-btn:hover {
+    background: #dc140f;
+}
+
+.red-filled-btn:active {
+    background: #dc143c;
+}
+
+.red-transparent-btn2 {
+    background: #ffffff;
+    color: #dc143c;
+    border: 1px solid #dc1000;
+}
+
+.red-transparent-btn2:hover {
+    background: #dc1000;
+}
+
+.red-transparent-btn2:active {
+    background: #dc2000;
+}
+
+.white-transparent-btn {
+    background: #ffffff;
+    color: #323233;
+    border: 1px solid #c2c2c2;
+}
+
+.white-transparent-btn:hover {
+    background: #f8f8f8;
+}
+
+.white-transparent-btn:active {
+    background: #c2c2c2;
+    border: none;
+}
+
+.orange-transparent-btn {
+    background: #fef3e6;
+    color: #f79f3b;
+    border: 1px solid #ec7f00;
+}
+
+.orange-transparent-btn:hover {
+    background: #f79f3b;
+    color: #fff;
+}
+
+.orange-transparent-btn:active {
+    background: #f79f3b;
+    color: #fff;
+    border: none;
+}
+
+.orange-transparent-btn-active {
+    background: #f79f3b;
+    color: #fff;
+    border: none;
+}
+
+.repeater-section-delete-btn {
+    background: #e57373;
+    border-radius: 5px;
+}
+
+.repeater-section-delete-btn:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    transition: 0.5s ease-in-out;
+    background: #c62828;
+    border-radius: 5px;
+    position: relative;
+    top: -2px;
+    transition: all 0.5s ease;
+}
+
+.repeater-section-delete-btn:active {
+    background: #9c0000;
+}
+
+.repeater-section-delete-btn-icon::before {
+    font-size: 1.2rem;
+}
+
+/*........................icon button........................*/
+.blue-transparent-btn-with-icon {
+    padding: 0.16rem 2rem 0rem 2rem;
+    background: #e6f1fd;
+    color: #0072ea;
+    border: 1px solid #0072ea;
+}
+
+.blue-transparent-btn-with-icon > .fa-plus {
+    font-size: 1rem !important;
+    color: #0072ea;
+}
+
+.blue-transparent-btn-with-icon:hover {
+    background: #0072ea;
+    color: #fff;
+    border: 1px solid #0072ea;
+}
+
+.blue-transparent-btn-with-icon:hover .fa.fa-plus {
+    background: #0072ea !important;
+    color: #fff !important;
+}
+
+.blue-transparent-btn-with-icon:active {
+    background: #003975;
+    color: #fff;
+    border: 1px solid #003975;
+}
+
+.blue-transparent-btn-with-icon:active > .fa.fa-plus {
+    background: #003975 !important;
+    color: #fff !important;
+}
+
+.blue-transparent-btn-with-icon-text {
+    margin-left: 0.3rem;
+    font-weight: 600;
+}
+
+.orchid-transparent-btn3 {
+    background: #f7ebfa;
+    color: #ba55d3;
+    border: 1px solid #ba55d3;
+}
+
+.orchid-transparent-btn3:hover {
+    background: #ba55d3;
+    color: #fff;
+}
+
+.orchid-transparent-btn3:active {
+    background: #ba55d3;
+    color: #fff;
+}
+
+.orchid-transparent-btn3-active {
+    background: #ba55d3;
+    color: #fff;
+}
+
+/*......................start: demo btn......................*/
+
+/*<button class="custom-btn blue-transparent-btn-with-icon">*/
+/*   <i class="fa fa-plus"></i>*/
+/*     <span class="blue-transparent-btn-with-icon-text">Add More</span>*/
+/*</button>*/
+
+/*......................end: demo btn......................*/

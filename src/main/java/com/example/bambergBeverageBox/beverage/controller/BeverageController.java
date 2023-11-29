@@ -24,9 +24,8 @@ public class BeverageController extends MVCController {
 
 
     @GetMapping
-    @TitleAndContent(title = "Beverages", content = "beverage/view", activeMenu = Menu.BEVERAGE)
+    @TitleAndContent(title = "Beverage", content = "beverage/view", activeMenu = Menu.BEVERAGE)
     public String add(
-            HttpServletRequest request,
             Model model
     ) {
 

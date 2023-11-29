@@ -1,0 +1,93 @@
+<script>
+
+    $.validator.setDefaults({
+
+        ignore: ':hidden, [readonly=readonly]',
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+            console.log({error, element});
+            console.log("new");
+
+            $(error).removeClass('is-invalid').addClass('invalid-feedback');
+
+            if ($(element).hasClass("datepicker")) {
+                error.insertAfter($(element).next("div"));
+            } else {
+                const errorMessageDiv = element.parent().siblings('.error-message-div');
+                if (errorMessageDiv && errorMessageDiv.length > 0) {
+                    errorMessageDiv.append(error);
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+
+            $(element).addClass("is-valid").removeClass("is-invalid");
+        }
+    });
+
+    const pastOrPresentDate = "[[#{validation.common.date.past_or_present}]]";
+    const pastDate = "[[#{validation.common.date.past}]]";
+    const futureOrPresentDate = "[[#{validation.common.date.future_or_present}]]";
+    const futureDate = "[[#{validation.common.date.future}]]";
+    const age = "[[#{validation.common.age.beyond_range}]]";
+
+    jQuery.validator.addMethod("presentOrFuture", function (value, element) {
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+        today = today.getTime();
+
+        let inputDate = value.split("/");
+        inputDate = new Date(inputDate[2], inputDate[1] - 1, inputDate[0]).getTime();
+
+        return (today - inputDate) <= 0;
+    }, futureOrPresentDate);
+
+    jQuery.validator.addMethod("future", function (value, element) {
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+        today = today.getTime();
+
+        let inputDate = value.split("/");
+        inputDate = new Date(inputDate[2], inputDate[1] - 1, inputDate[0]).getTime();
+
+        return (today - inputDate) < 0;
+    }, futureDate);
+
+    jQuery.validator.addMethod("presentOrPast", function (value, element) {
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+        today = today.getTime();
+
+        let inputDate = value.split("/");
+        inputDate = new Date(inputDate[2], inputDate[1] - 1, inputDate[0]).getTime();
+
+        return (today - inputDate) >= 0;
+    }, pastOrPresentDate);
+
+    jQuery.validator.addMethod("past", function (value, element) {
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+        today = today.getTime();
+
+        let inputDate = value.split("/");
+        inputDate = new Date(inputDate[2], inputDate[1] - 1, inputDate[0]).getTime();
+
+        return (today - inputDate) > 0;
+    }, pastDate);
+
+    jQuery.validator.addMethod("age", function (value, element, params) {
+        let today = moment().format("YYYY");
+
+        let inputDate = value.split("/");
+        let ageValue = today - inputDate[2];
+
+        return (ageValue > params[0] && ageValue < params[1]);
+    }, age);
+
+</script>

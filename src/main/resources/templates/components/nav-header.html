@@ -170,37 +170,7 @@
                                  data-app-notification-scroll-div
                                  data-mobile-height="200"
                             >
-<!--                                <div th:each="appNotificationResponse : ${appNotificationIterResponse.data}"-->
-<!--                                     data-app-notification-div-->
-<!--                                     th:data-app-notification-id="${appNotificationResponse.id}"-->
-<!--                                     th:data-app-notification-url="${appNotificationResponse.url}"-->
-<!--                                     th:data-app-notification-is-target-blank="${appNotificationResponse.isTargetBlank}"-->
-<!--                                     onclick="makeAppNotificationSeen(this);"-->
-<!--                                     class="notification-container"-->
-<!--                                     th:classappend="${appNotificationResponse.isSeen ? 'notification-read' : 'notification-unread'}"-->
-<!--                                >-->
-<!--                                    <div class="notification-image-wrapper">-->
-<!--                                        <img class="notification-owner-img"-->
-<!--                                             height="50"-->
-<!--                                             width="50"-->
-<!--                                             th:src="${appNotificationResponse.avatarPhotoSrc}"-->
-<!--                                             alt=""-->
-<!--                                        />-->
-<!--                                    </div>-->
-<!--                                    <div class="notification-info-wrapper">-->
-<!--                                        <h6 class="mb-1 notification-text" data-app-notification-text-->
-<!--                                            th:text="${ lang == 'bn' ? appNotificationResponse.textBn-->
-<!--                                                                     : appNotificationResponse.textEn}"-->
-<!--                                        >-->
-<!--                                            Notification Text-->
-<!--                                        </h6>-->
-<!--                                        <span class="notification-date" data-app-notification-time-->
-<!--                                              th:text="${appNotificationResponse.formattedNotificationTime}"-->
-<!--                                        >-->
-<!--                                            Notification Date-->
-<!--                                        </span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+
                                 <div data-app-notification-loader-div
                                      class="notification-container app-notification-hidden">
                                     <div class="notification-image-wrapper">
@@ -223,14 +193,7 @@
             </div>
             <!--end::Notifications-->
 
-<!--            <div class="topbar-item change-lang" th:data-lang="${lang == 'en' ? 'bn' : 'en'}">-->
-<!--                <div th:switch="${lang}" class="btn btn-icon btn-clean btn-dropdown btn-lg pl-15 pr-15">-->
-<!--                    <img th:case="'bn'" style="height: 24px; width: 72px" class=" rounded-sm" data-lang="en"-->
-<!--                         th:src="@{/metronic/assets/media/svg/language-images/english.PNG}" alt=""/>-->
-<!--                    <img th:case="'en'" style="height: 24px; width: 70px" class=" rounded-sm" data-lang="bn"-->
-<!--                         th:src="@{/metronic/assets/media/svg/language-images/bangla.PNG}" alt=""/>-->
-<!--                </div>-->
-<!--            </div>-->
+
 
             <!--begin::User-->
             <div class="topbar-item" style="cursor: pointer">
@@ -247,10 +210,6 @@
 
                     <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                         <span class="symbol-label font-size-h5 font-weight-bold" style="height: 35px; width: 35px">
-<!--                            <img th:if="${loggedInUser.photo64 != null}"-->
-<!--                                 th:src="${loggedInUser.photo64}"-->
-<!--                                 height="35" width="35" style="border-radius: .42rem; object-fit: contain"-->
-<!--                            />-->
                             <img
                                  th:src="@{/images/common/avatar.png}"
                                  height="35" width="35" style="border-radius: .42rem; object-fit: contain"
