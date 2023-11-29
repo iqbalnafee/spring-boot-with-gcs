@@ -79,7 +79,7 @@ body {
 
 /*full side menu background color*/
 .aside-menu {
-    background-color: #08923b;
+    background-color: #000;
 }
 
 /*menu text padding*/
@@ -111,7 +111,7 @@ body {
 
 /*all module bg color*/
 .aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover {
-    background: #13882C !important;
+    background: #000 !important;
 }
 
 /*all dropdown arrow color*/
