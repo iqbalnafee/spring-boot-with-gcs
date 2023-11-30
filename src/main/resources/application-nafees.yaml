@@ -28,7 +28,7 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     password: 12345678
-    url: jdbc:mysql://localhost:8088/nbr
+    url: jdbc:mysql://localhost:8088/bamberg_beverage_box
     username: root
 
 server:
