@@ -30,17 +30,16 @@ public class BeverageController extends MVCController {
     ) {
 
         log.debug("Rendering Product Page");
-        beverageModelService.addBeverageModel(model);
         return viewRoot;
     }
 
     @GetMapping(value = "/add")
-    @TitleAndContent(title = "Beverage", content = "beverage/add", activeMenu = Menu.BEVERAGE_ADD)
+    @TitleAndContent(title = "Add Beverage", content = "beverage/add", activeMenu = Menu.BEVERAGE_ADD)
     public String add(
             Model model
     ) {
 
-        log.debug("Rendering Product Page");
+        log.debug("Rendering Beverage Add Page");
         beverageModelService.addBeverageModel(model);
         return viewRoot;
     }

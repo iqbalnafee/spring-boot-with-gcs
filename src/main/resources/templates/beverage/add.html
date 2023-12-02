@@ -1,13 +1,52 @@
-<div id="kt_page_sticky_card" class="card card-custom card-sticky">
-    <div class="card-header align-items-center">
-        <div class="card-title">
-            <h3 class="card-label">
-                Beverages
-            </h3>
+<style>
+    .d-flex.flex-column.flex-root {
+        margin-bottom: 0px;
+    }
+</style>
+<th:block th:with="formId = 'beverageAdd'">
+
+    <form
+            th:id="${formId}"
+            class="form"
+            method="POST"
+            enctype="multipart/form-data"
+            th:object="${beverageTotalRequest}"
+    >
+        <div id="kt_page_sticky_card" class="card card-custom card-sticky">
+            <div class="card-header">
+                <div class="card-title">
+                    <h3 class="card-label" th:text="${pageTitle}">
+                    </h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="from-group">
+                    <div id="bondApplicationMachineCategoryRepeater">
+                        <div data-repeater-list="bondApplicationImMachineCategoryAddRequests">
+<!--                            <th:block-->
+<!--                                    th:if="*{ beverageAddRequestList != null or #lists.size( beverageAddRequestList ) > 0 }">-->
+<!--                                <th:block-->
+<!--                                        th:replace="im-machine-category/components/im-machine-category-repeater-add-template"/>-->
+<!--                            </th:block>-->
+                        </div>
+                        <div class="row" th:if="${beverageTotalRequest.editable == false}">
+                            <div class="col-md-12 text-right">
+                                <button type="button" href="javascript:;" data-repeater-create=""
+                                        class="custom-btn blue-transparent-btn-with-icon">
+                                    <i class="fa fa-plus"></i>
+                                    <span class="blue-transparent-btn-with-icon-text">Add More</span>
+                                    <i class="fa fa-plus mr-2 repeater-plus-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="row mt-10">-->
+<!--                    <div class="col-12 text-right">-->
+<!--                        <button type="button" onclick="saveMachineCategory(() => redirectToSearch())" class="custom-btn blue-filled-btn">Submit</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
         </div>
-    </div>
-    <div class="card-body">
-
-
-    </div>
-</div>
+    </form>
+</th:block>
