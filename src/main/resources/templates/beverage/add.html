@@ -3,6 +3,7 @@
         margin-bottom: 0px;
     }
 </style>
+<th:block th:replace="beverage/js/beverage-add-js"></th:block>
 <th:block th:with="formId = 'beverageAdd'">
 
     <form
@@ -21,31 +22,32 @@
             </div>
             <div class="card-body">
                 <div class="from-group">
-                    <div id="bondApplicationMachineCategoryRepeater">
-                        <div data-repeater-list="bondApplicationImMachineCategoryAddRequests">
-<!--                            <th:block-->
-<!--                                    th:if="*{ beverageAddRequestList != null or #lists.size( beverageAddRequestList ) > 0 }">-->
-<!--                                <th:block-->
-<!--                                        th:replace="im-machine-category/components/im-machine-category-repeater-add-template"/>-->
-<!--                            </th:block>-->
+                    <div id="beverageAddRepeater">
+                        <div data-repeater-list="beverageAddRequestList">
+                            <th:block
+                                    th:if="*{ beverageAddRequestList != null or #lists.size( beverageAddRequestList ) > 0 }">
+                                <th:block
+                                        th:replace="beverage/components/beverage-repeater-add-template"/>
+                            </th:block>
                         </div>
                         <div class="row" th:if="${beverageTotalRequest.editable == false}">
                             <div class="col-md-12 text-right">
                                 <button type="button" href="javascript:;" data-repeater-create=""
                                         class="custom-btn blue-transparent-btn-with-icon">
-                                    <i class="fa fa-plus"></i>
+
                                     <span class="blue-transparent-btn-with-icon-text">Add More</span>
-                                    <i class="fa fa-plus mr-2 repeater-plus-icon"></i>
+
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-<!--                <div class="row mt-10">-->
-<!--                    <div class="col-12 text-right">-->
-<!--                        <button type="button" onclick="saveMachineCategory(() => redirectToSearch())" class="custom-btn blue-filled-btn">Submit</button>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="row mt-10">
+                    <div class="col-12 text-right">
+                        <button type="button" onclick="saveMachineCategory(() => redirectToSearch())"
+                                class="custom-btn blue-filled-btn">Submit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>

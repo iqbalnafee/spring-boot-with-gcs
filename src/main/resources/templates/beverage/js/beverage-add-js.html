@@ -1,0 +1,91 @@
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#beverageAddRepeater').repeater({
+
+            initEmpty: false,
+
+            show: function () {
+                $(this).slideDown();
+            },
+
+            hide: function (deleteElement) {
+                poolConfirm(
+                    {
+                        title: poolConfirmation,
+                        text: poolRevertConfirmation,
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonText: deleteTitle,
+                        cancelButtonText: poolConfirmNo
+                    },
+                    (result) => {
+                        $(this).slideUp(deleteElement);
+                    }
+                );
+            }
+
+        })
+    });
+
+    function saveMachineCategory(successFun, failFun) {
+        const successMsg="Information Saved Successfully";
+        showLoader();
+        $.post({
+            url: context + '/api/im-machine-category/save',
+            enctype: 'multipart/form-data',
+            data: new FormData(($("#imMachineCategoryAdd"))[0]),
+            processData: false,
+            contentType: false,
+            success: (res) => {
+                if (res.success) {
+                    successToast(successMsg,
+                        successFun,
+                        res);
+                } else {
+                    failureToast(res.message,failFun);
+                }
+            },
+            error: () => {
+                failureToast(dataSaveFailure, failFun);
+            }
+        });
+    }
+
+    function redirectToSearch(){
+        window.location.href=context+'/im-machine-category/search';
+    }
+
+    function successToast(msg, successFun, res) {
+        hideLoader();
+        Swal.fire({
+            title: dataSaved,
+            html: msg,
+            type: "success",
+            timer: 3000,
+            onClose: () => {
+                if (successFun && typeof successFun === 'function') {
+                    successFun(res);
+                }
+            }
+        });
+    }
+
+    function failureToast(msg, failFun) {
+        hideLoader();
+        Swal.fire({
+            title: failure,
+            html: msg,
+            type: "error",
+            timer: 3000,
+            onClose: () => {
+                if (failFun && typeof failFun === 'function') {
+                    failFun();
+                }
+            }
+        });
+    }
+
+</script>

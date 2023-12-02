@@ -1,0 +1,78 @@
+<script>
+
+
+
+    const deleteSuccess = "Deleted";
+    const poolConfirmation = "Are you sure";
+    const poolRevertConfirmation = "You won't be able to revert this!";
+    const poolConfirmYes = "Yes";
+    const poolConfirmNo = "Cancel";
+    const poolConfirmOk = "Ok";
+
+    const deleteTitle = "Delete";
+    const actionSuccess = "Success";
+    const dataSaveFailure = "Failure";
+    const dataSaveSuccess = "Success";
+    const dataSaved = "Saved";
+    const submitted = 'Submitted';
+    const failure = "Failure!";
+
+
+
+    function resetForm(formId) {
+        document.getElementById(formId).reset();
+    }
+
+    function submitForm(formId) {
+        document.getElementById(formId).submit();
+    }
+
+    function poolConfirm(swalConfig, successCallback) {
+
+        Swal.fire(swalConfig)
+            .then(function (result) {
+
+                if (result.value) {
+
+                    successCallback(result);
+                }
+            });
+    }
+
+    function poolConfirmWithTitle(title, successCallback) {
+        poolConfirm(
+            {
+                title: title,
+                text: poolRevertConfirmation,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: poolConfirmYes,
+                cancelButtonText: poolConfirmNo
+            },
+            (result) => {
+                successCallback(result);
+            }
+        );
+    }
+
+    function poolConfirmWithRejectAction(swalConfig, successCallback, rejectCallback) {
+
+        Swal.fire(swalConfig)
+            .then(function (result) {
+                if (result.isConfirmed) {
+                    successCallback(result);
+                } else {
+                    if (result.dismiss === Swal.DismissReason.cancel) {
+                        rejectCallback(result);
+                    } else if (result.dismiss === Swal.DismissReason.backdrop) {
+                        //for outside click
+                    } else if (result.dismiss === Swal.DismissReason.close) {
+                        //The user clicked the close button.
+                    }
+                }
+            });
+    }
+
+
+
+</script>
