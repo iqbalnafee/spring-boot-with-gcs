@@ -1,0 +1,58 @@
+<!--<style>-->
+<!--    .add-another-btn {-->
+<!--        background: #e6f1fd;-->
+<!--        color: #0072ea;-->
+<!--        border: 1px solid #0072ea;-->
+<!--        height: 48px !important;-->
+<!--        padding: 0 1.5rem;-->
+<!--    }-->
+
+<!--    .add-another-btn:hover {-->
+<!--        background: #0072ea;-->
+<!--        color: #fff;-->
+<!--    }-->
+
+<!--    .add-another-btn:active {-->
+<!--        outline: none;-->
+<!--        -webkit-box-shadow: none;-->
+<!--        box-shadow: none;-->
+<!--        border: none;-->
+<!--        background: #0056b0;-->
+<!--        color: #fff;-->
+<!--    }-->
+
+<!--    .repeater-plus-icon {-->
+<!--        color: #0072ea !important;-->
+<!--    }-->
+
+<!--    .add-another-btn:hover .repeater-plus-icon {-->
+<!--        color: #fff !important;-->
+<!--        background-color: transparent;-->
+<!--    }-->
+
+<!--    /*.add-hs-code-btn, .fa-plus {*/-->
+<!--    /*    background: transparent !important;*/-->
+<!--    /*}*/-->
+
+<!--</style>-->
+<!--<button type="button" href="javascript:;" data-repeater-create="" class="btn add-another-btn"-->
+<!--        th:disabled="${disabled}"-->
+<!--        th:id="${id}"-->
+<!--        th:style="${style}"-->
+<!--        th:attr="data-toggle=${dataToggle},data-target=${dataTarget}">-->
+<!--    <i class="fa fa-plus mr-2 repeater-plus-icon"></i>[[${label}]]-->
+<!--</button>-->
+
+<button
+        type="button"
+        href="javascript:;"
+        data-repeater-create=""
+        class="custom-btn blue-transparent-btn-with-icon add-another-btn"
+        th:disabled="${disabled}"
+        th:id="${id}"
+        th:style="${style}"
+        th:attr="data-toggle=${dataToggle},data-target=${dataTarget}"
+>
+    <i class="fa fa-plus"></i>
+    <span class="blue-transparent-btn-with-icon-text">[[${label}]]</span>
+</button>

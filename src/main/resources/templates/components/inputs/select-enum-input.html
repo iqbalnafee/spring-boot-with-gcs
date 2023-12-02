@@ -1,0 +1,15 @@
+<label th:for="${field}">
+    [[#{${label}}]]
+    <span th:if="${ required == true }" class="text-danger">*</span>
+</label>
+
+<select th:field="*{__${field}__}" class="form-control" th:classappend="${class}" th:style="${style}" th:required="${required}" th:readonly = "${readonly}" >
+
+    <option value="">[[#{label.common.choose}]]</option>
+    <th:block th:each="const: ${ __${ 'T(' + enum + ').values()' }__ }">
+        <option th:value="${const}" th:text="#{ ${ __${ 'T(' + enum + ').getLabel( T(' + enum + ').' + const + ' )' }__ } }"></option>
+    </th:block>
+
+</select>
+
+<div class="invalid-feedback" th:if="${#fields.hasErrors('__${field}__')}" th:errors="*{__${field}__}" > Error! </div>

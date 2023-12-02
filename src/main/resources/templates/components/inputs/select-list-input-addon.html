@@ -1,0 +1,117 @@
+<style>
+    .custom-another-select-input-group-text-box {
+        background: #F2F2F3;
+        color: #323233;
+    }
+
+    .custom-another-select-group {
+        margin-bottom: 2rem;
+    }
+
+    .custom-another-select-group,
+    .custom-another-select {
+        height: 48px;
+    }
+
+    .custom-another-select {
+        border: 1px solid #c2c2c2;
+    }
+
+    .custom-another-select:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+        border: 1px solid #0072ea;
+    }
+
+    select.custom-another-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 11px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .custom-another-input-input-group-text-box {
+        background: #F2F2F3;
+        color: #323233;
+    }
+
+    .custom-another-input-group {
+        margin-bottom: 2rem;
+    }
+
+    .custom-another-input-group,
+    .custom-another-input {
+        height: 48px;
+    }
+
+    .custom-another-input {
+        border: 1px solid #c2c2c2;
+    }
+
+    .custom-another-input:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+        border: 1px solid #0072ea;
+    }
+</style>
+<div class="input-group custom-another-select-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text custom-another-select-input-group-text-box pr-4"
+              id="basic-addon3">[[#{${label}}]]</span>
+    </div>
+
+    <select
+            th:if="${field != null}"
+            th:field="*{__${field}__}"
+            th:id="${id}"
+            class="form-control custom-another-select"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:required="${required}"
+            th:readonly="${readonly}">
+
+        <option value="">[[#{label.common.choose}]]</option>
+        <option
+                th:each="item: ${list}"
+                th:value="${item.id}"
+                th:text="${ lang == 'en'? item.nameEn: item.nameBn }">
+        </option>
+    </select>
+    <!--    <div th:text="${{ value }}"></div>-->
+    <!--    <div th:text="${17 == *{{ __${value}__ }}"></div>-->
+    <!--    <div th:text="${'17' ==  ${value} }">-->
+    <!--    </div>-->
+    <select
+            th:if="${field == null}"
+            class="form-control custom-another-select"
+            th:id="${id}"
+            th:name="${name}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:required="${required}"
+            th:readonly="${readonly}"
+            th:value="*{__${value}__}"
+    >
+
+        <option value="">[[#{label.common.choose}]]</option>
+        <option
+                th:each="item: ${list}"
+                th:value="${item.id}"
+                th:text="${ lang == 'en'? item.nameEn: item.nameBn }"
+                th:selected="${item.id == selectedValue}"
+        >
+        </option>
+    </select>
+
+</div>
+<div class="error-message-div"></div>
+<div class="invalid-feedback" th:if="${field != null && #fields.hasErrors( '__${field}__' )}"
+     th:errors="*{__${field}__}"> Error!
+</div>

@@ -1,0 +1,74 @@
+<style>
+    .select2-selection.select2-selection--single{
+        height: 48px;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__arrow:after, .select2-container--default .select2-selection--single .select2-selection__arrow:after {
+        display: none;
+    }
+</style>
+
+<div class="select">
+
+    <select
+            th:if="${field != null}"
+            th:field="*{__${field}__}"
+            class="form-control select-text "
+            th:id="${id}"
+            th:name="${name}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:required="${required}"
+            th:readonly="${readonly}"
+            th:hideEmptyOption="${hideEmptyOption}"
+            th:multiple="${multiple}">
+
+        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">[[#{label.common.choose}]]</option>
+        <option
+                th:each="item: ${list}"
+                th:value="${item.id}"
+                th:text="${ isLangEng? item.nameEn: item.nameBn }">
+        </option>
+    </select>
+
+    <select
+            th:if="${field == null}"
+            class="select-text form-control"
+            th:id="${id}"
+            th:name="${name}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:required="${required}"
+            th:readonly="${readonly}"
+            th:value="${selectedValue}"
+            th:hideEmptyOption="${hideEmptyOption}"
+            th:multiple="${multiple}"
+    >
+
+        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">[[#{label.common.choose}]]</option>
+        <option
+                th:each="item: ${list}"
+                th:value="${item.id}"
+                th:text="${ isLangEng? item.nameEn: item.nameBn }"
+                th:selected="${item.id == selectedValue}"
+
+        >
+        </option>
+    </select>
+
+    <label th:if="${field != null && (hideLabel == null || hideLabel == false)}" th:for="${field}" class="select-label">
+        [[#{${label}}]]
+        <span th:if="${ required == true || requiredStar==true}" class="text-danger">*</span>
+    </label>
+    <label th:if="${field == null && (hideLabel == null || hideLabel == false)}" th:for="${id}" class="select-label">
+        [[#{${label}}]]
+        <span th:if="${ required == true || requiredStar==true}" class="text-danger">*</span>
+    </label>
+
+</div>
+
+<div class="error-message-div"></div>
+<div class="invalid-feedback" th:if="${field!=null && #fields.hasErrors('__${field}__')}" th:errors="*{__${field}__}"> Error!</div>
+
+
+

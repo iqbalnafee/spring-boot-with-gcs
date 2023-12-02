@@ -1,0 +1,30 @@
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/search-nav.css}"/>
+<div class="pagination-div" style="display: none">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div>
+            <select class="form-control page-size" onchange="pagingClosure.changePageSize(this.value)">
+                <option class="page_option" value="10">10</option>
+                <option class="page_option" value="25">25</option>
+                <option class="page_option" value="50">50</option>
+                <option class="page_option" value="100">100</option>
+            </select>
+        </div>
+        <div class="btn-group pl-0">
+            <button class="btn btn-primary li_1 my-2" onClick="pagingClosure.pageClick(1)">&lt;&lt;</button>
+            <button class="btn btn-primary li_2 my-2" onClick="pagingClosure.pageClick(2)">&lt;</button>
+            <button class="btn btn-primary li_3 my-2 search-active-btn" onClick="pagingClosure.pageClick(3)">1
+            </button>
+            <button class="btn btn-primary li_4 my-2" onClick="pagingClosure.pageClick(4)">2
+            </button>
+            <button class="btn btn-primary li_5 my-2" onClick="pagingClosure.pageClick(5)">3
+            </button>
+            <button class="btn btn-primary li_6 my-2" onClick="pagingClosure.pageClick(6)">4
+            </button>
+            <button class="btn btn-primary li_7 my-2" onClick="pagingClosure.pageClick(7)">5
+            </button>
+            <button class="btn btn-primary li_8 my-2" onClick="pagingClosure.pageClick(8)">&gt;</button>
+            <button class="btn btn-primary li_9 my-2" onClick="pagingClosure.pageClick(9)">&gt;&gt;</button>
+        </div>
+    </div>
+</div>

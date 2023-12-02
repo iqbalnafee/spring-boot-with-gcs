@@ -1,0 +1,16 @@
+<label th:for="${field}">
+    [[#{${label}}]]
+    <span th:if="${ required == true }" class="text-danger">*</span>
+</label>
+
+<select th:field="*{__${field}__}" class="form-control" th:classappend="${class}" th:style="${style}" th:required="${required}" th:readonly = "${readonly}">
+
+    <option value="">[[#{label.common.choose}]]</option>
+    <option
+            th:each="pair: ${map}"
+            th:value="${pair.key}"
+            th:text="#{${pair.value}}">
+    </option>
+</select>
+
+<div class="invalid-feedback" th:if="${#fields.hasErrors('__${field}__')}" th:errors="*{__${field}__}" > Error! </div>

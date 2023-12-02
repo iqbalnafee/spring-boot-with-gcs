@@ -1,0 +1,52 @@
+<div class="select">
+
+    <select th:if="${field != null}"
+            th:field="*{__${field}__}"
+            th:id="${id}"
+            class="select-text form-control"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:required="${required}"
+            th:readonly="${readonly}"
+            onchange="selectorOptionChanged(this)">
+
+        <option value="">[[#{label.common.choose}]]</option>
+        <option
+                th:each="item: ${list}"
+                th:value="${item.id}"
+                th:text="${ lang == 'en'? item.nameEn: item.nameBn }">
+        </option>
+    </select>
+
+    <select
+            th:if="${field == null}"
+            class="select-text form-control"
+            th:id="${id}"
+            th:name="${name}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:required="${required}"
+            th:readonly="${readonly}"
+            onchange="selectorOptionChanged(this)"
+    >
+        <option value="">[[#{label.common.choose}]]</option>
+        <option
+                th:each="item: ${list}"
+                th:value="${item.id}"
+                th:text="${ lang == 'en'? item.nameEn: item.nameBn }"
+                th:selected="${item.id == selectedValue}"
+        >
+        </option>
+    </select>
+
+    <label th:if="${field != null}" th:for="${field}" class="select-label">
+        [[#{${label}}]]
+        <span th:if="${ required == true }" class="text-danger">*</span>
+    </label>
+    <label th:if="${field == null}" th:for="${id}" class="select-label">
+        [[#{${label}}]]
+        <span th:if="${ required == true }" class="text-danger">*</span>
+    </label>
+</div>
+<div class="error-message-div"></div>
+<div class="invalid-feedback" th:if="${field!=null && #fields.hasErrors('__${field}__')}" th:errors="*{__${field}__}"> Error!</div>

@@ -43,5 +43,14 @@ public class BeverageController extends MVCController {
         beverageModelService.addBeverageModel(model);
         return viewRoot;
     }
+    @GetMapping(value = "/search")
+    @TitleAndContent(title = "Add Beverage", content = "beverage/search", activeMenu = Menu.BEVERAGE_ADD)
+    public String search(
+            Model model
+    ) {
+
+        log.debug("Rendering Beverage Search Page");
+        return viewRoot;
+    }
 
 }

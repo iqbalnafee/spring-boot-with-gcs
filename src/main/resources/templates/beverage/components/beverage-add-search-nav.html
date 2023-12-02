@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" th:href="@{/css/search-nav.css}"/>
+<th:block th:with="formId = 'beverageAddSearchNav'">
+    <!--begin::Form-->
+    <form
+            th:id="${formId}"
+            class="form"
+            enctype="multipart/form-data"
+    >
+        <div id="kt_page_sticky_card" class="card card-custom card-sticky shadow-none" style="margin-top: 5px">
+            <div class="card-body p-0">
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-6 col-xl-4 name_en">
+                            <th:block
+                                    th:with="label='Beverage Name English', id=${'beverageNameEn'},name=${'beverageNameEn'}, type=${'text'}"
+                                    th:include="components/inputs/text-input">
+                            </th:block>
+                        </div>
+                        <div class="col-md-6 col-xl-4 name_bn">
+                            <th:block
+                                    th:with="label='Beverage Name Deutsch', id=${'beverageNameDe'},name=${'beverageNameDe'}, type=${'text'}"
+                                    th:include="components/inputs/text-input">
+                            </th:block>
+                        </div>
+
+
+                        <div class="col-xl-4 text-right text-xl-left">
+                            <button class="custom-btn blue-filled-btn" type="button" id="machine-category-search-btn"> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--end::Form-->
+</th:block>

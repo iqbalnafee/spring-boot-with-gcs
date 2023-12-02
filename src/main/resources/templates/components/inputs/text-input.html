@@ -1,0 +1,64 @@
+<div class="form__div">
+    <input
+            th:if="${field != null}"
+            class="form__input form-control"
+            th:id="${id}"
+            th:errorclass="is-invalid"
+            th:type="${type}"
+            th:minlength="${min}"
+            th:maxlength="${max}"
+            th:field="*{__${field}__}"
+            th:required="${required}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:readonly="${readonly}"
+            th:disabled="${disabled}"
+            th:numbertype="${numbertype}"
+            th:decimalPoint="${decimalPoint}"
+            th:maxValue="${maxValue}"
+            th:allowedLang="${allowedLang}"
+            th:title="${tooltiptext != null ? tooltiptext : ''}"
+            onkeydown="return commonInputValidation.inputValidation(event,this)"
+            onblur="removeLeadingTrailingSpaces(this)"
+            placeholder=" "
+    />
+    <input
+            th:if="${field == null}"
+            class="form__input form-control"
+            th:id="${id}"
+            th:name="${name}"
+            th:type="${type}"
+            th:minlength="${min}"
+            th:maxlength="${max}"
+            th:required="${required}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:readonly="${readonly}"
+            th:disabled="${disabled}"
+            th:value="*{{ __${value}__ }}"
+            th:numbertype="${numbertype}"
+            th:decimalPoint="${decimalPoint}"
+            th:maxValue="${maxValue}"
+            th:allowedLang="${allowedLang}"
+            th:title="${tooltiptext != null ? tooltiptext : ''}"
+            onkeydown="return commonInputValidation.inputValidation(event,this)"
+            onblur="removeLeadingTrailingSpaces(this)"
+            placeholder=" "
+    />
+    <label th:unless="${hideLabel == true}" th:for="${id}" class="form__label" th:text="${label}">
+        <span th:if="${ required == true }" class="text-danger required-asterisk">*</span>
+    </label>
+</div>
+<div class="error-message-div"></div>
+<div class="invalid-feedback" th:if="${field != null && #fields.hasErrors( '__${field}__' )}"
+     th:errors="*{__${field}__}"> Error!
+</div>
+<p class="text-danger minLengthError" style="display: none">Minimum character length is 5</p>
+
+<script>
+    function removeLeadingTrailingSpaces(inputElement) {
+        if (inputElement.value) {
+            inputElement.value = inputElement.value.trim();
+        }
+    }
+</script>

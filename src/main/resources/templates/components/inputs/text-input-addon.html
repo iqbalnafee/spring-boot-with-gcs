@@ -1,0 +1,77 @@
+<style>
+    .custom-another-input-input-group-text-box {
+        background: #F2F2F3;
+        color: #323233;
+    }
+
+    .custom-another-input-group {
+        margin-bottom: 2rem;
+    }
+
+    .custom-another-input-group,
+    .custom-another-input {
+        height: 48px;
+    }
+
+    .custom-another-input {
+        border: 1px solid #c2c2c2;
+    }
+
+    .custom-another-input:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+        border: 1px solid #0072ea;
+    }
+</style>
+<div class="input-group custom-another-input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text custom-another-input-input-group-text-box pr-4">[[#{${label}}]]<span th:if="${ required == true }" class="text-danger">*</span></span>
+
+    </div>
+    <!--<div class="form__div">-->
+    <input
+            th:if="${field != null}"
+            class="form__input form-control"
+            th:id="${id}"
+            th:errorclass="is-invalid"
+            th:type="${type}"
+            th:min="${min}"
+            th:max="${max}"
+            th:field="*{__${field}__}"
+            th:required="${required}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:readonly="${readonly}"
+            placeholder=" "
+    />
+    <input
+            th:if="${field == null}"
+            class="form__input form-control"
+            th:id="${id}"
+            th:name="${name}"
+            th:type="${type}"
+            th:min="${min}"
+            th:max="${max}"
+            th:required="${required}"
+            th:classappend="${class}"
+            th:style="${style}"
+            th:readonly="${readonly}"
+            th:value="*{{ __${value}__ }}"
+            placeholder=" "
+    />
+</div>
+<div class="error-message-div"></div>
+<div class="invalid-feedback" th:if="${field != null && #fields.hasErrors( '__${field}__' )}"
+     th:errors="*{__${field}__}"> Error!
+</div>
+<script>
+    $(document).ready(function () {
+        $(".custom-another-input").focus(function () {
+            $(this).parent().find("span").css("border", "1px solid #0072ea");
+        });
+        $(".custom-another-input").focusout(function () {
+            $(this).parent().find("span").css("border", "1px solid #C2C2C2");
+        });
+    })
+</script>
