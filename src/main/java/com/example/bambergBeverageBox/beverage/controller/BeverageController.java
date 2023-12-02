@@ -24,7 +24,18 @@ public class BeverageController extends MVCController {
 
 
     @GetMapping
-    @TitleAndContent(title = "Beverage", content = "beverage/view", activeMenu = Menu.BEVERAGE)
+    @TitleAndContent(title = "Beverage", content = "beverage/view", activeMenu = Menu.BEVERAGE_VIEW)
+    public String view(
+            Model model
+    ) {
+
+        log.debug("Rendering Product Page");
+        beverageModelService.addBeverageModel(model);
+        return viewRoot;
+    }
+
+    @GetMapping(value = "/add")
+    @TitleAndContent(title = "Beverage", content = "beverage/add", activeMenu = Menu.BEVERAGE_ADD)
     public String add(
             Model model
     ) {

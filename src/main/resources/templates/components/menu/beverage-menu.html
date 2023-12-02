@@ -1,9 +1,20 @@
 <li
-        th:classappend="${ menuPath != null and menuPath.contains(Menu.BEVERAGE)? '':'' }"
+        th:classappend="${ menuPath != null and menuPath.contains(Menu.BEVERAGE)? 'menu-item-here menu-item-open':'' }"
         class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"
 
 >
     <th:block th:with="menuName = 'Product'">
         <div th:replace="fragment/menu-fragment::root-node"></div>
     </th:block>
+
+    <div class="menu-submenu">
+
+        <ul class="menu-subnav">
+
+
+            <th:block th:replace="components/menu/beverage-action-menu"></th:block>
+
+
+        </ul>
+    </div>
 </li>

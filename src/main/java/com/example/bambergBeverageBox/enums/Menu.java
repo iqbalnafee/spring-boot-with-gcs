@@ -7,7 +7,9 @@ import java.util.List;
 public enum Menu {
 
     DASHBOARD,
-    BEVERAGE(null);
+    BEVERAGE(null),
+    BEVERAGE_ADD(BEVERAGE),
+    BEVERAGE_VIEW(BEVERAGE);
 
     private final Menu parentMenu;
 
