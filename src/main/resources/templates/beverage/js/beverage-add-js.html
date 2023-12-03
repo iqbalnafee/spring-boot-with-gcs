@@ -30,13 +30,13 @@
         })
     });
 
-    function saveMachineCategory(successFun, failFun) {
+    function saveBeverages(successFun, failFun) {
         const successMsg="Information Saved Successfully";
         showLoader();
         $.post({
-            url: context + '/api/im-machine-category/save',
+            url: '/api/beverage/save',
             enctype: 'multipart/form-data',
-            data: new FormData(($("#imMachineCategoryAdd"))[0]),
+            data: new FormData(($("#beverageAdd"))[0]),
             processData: false,
             contentType: false,
             success: (res) => {
@@ -55,7 +55,7 @@
     }
 
     function redirectToSearch(){
-        window.location.href=context+'/im-machine-category/search';
+        window.location.href= '/search';
     }
 
     function successToast(msg, successFun, res) {
