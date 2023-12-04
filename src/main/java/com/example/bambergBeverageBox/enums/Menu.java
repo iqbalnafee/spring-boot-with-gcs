@@ -9,6 +9,7 @@ public enum Menu {
     DASHBOARD,
     BEVERAGE(null),
     BEVERAGE_ADD(BEVERAGE),
+    BOTTLE_ADD(BEVERAGE),
     BEVERAGE_VIEW(BEVERAGE);
 
     private final Menu parentMenu;

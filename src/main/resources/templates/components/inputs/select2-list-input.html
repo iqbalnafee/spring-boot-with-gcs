@@ -23,11 +23,11 @@
             th:hideEmptyOption="${hideEmptyOption}"
             th:multiple="${multiple}">
 
-        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">[[#{label.common.choose}]]</option>
+        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">Select Option</option>
         <option
                 th:each="item: ${list}"
                 th:value="${item.id}"
-                th:text="${ isLangEng? item.nameEn: item.nameBn }">
+                th:text="${item.nameEn}">
         </option>
     </select>
 
@@ -45,23 +45,22 @@
             th:multiple="${multiple}"
     >
 
-        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">[[#{label.common.choose}]]</option>
+        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">Select Option</option>
         <option
                 th:each="item: ${list}"
                 th:value="${item.id}"
-                th:text="${ isLangEng? item.nameEn: item.nameBn }"
+                th:text="${item.nameEn}"
                 th:selected="${item.id == selectedValue}"
 
         >
         </option>
     </select>
 
-    <label th:if="${field != null && (hideLabel == null || hideLabel == false)}" th:for="${field}" class="select-label">
-        [[#{${label}}]]
+    <label th:if="${field != null && (hideLabel == null || hideLabel == false)}" th:for="${field}" class="select-label" th:text="${label}">
+
         <span th:if="${ required == true || requiredStar==true}" class="text-danger">*</span>
     </label>
-    <label th:if="${field == null && (hideLabel == null || hideLabel == false)}" th:for="${id}" class="select-label">
-        [[#{${label}}]]
+    <label th:if="${field == null && (hideLabel == null || hideLabel == false)}" th:for="${id}" class="select-label" th:text="${label}">
         <span th:if="${ required == true || requiredStar==true}" class="text-danger">*</span>
     </label>
 

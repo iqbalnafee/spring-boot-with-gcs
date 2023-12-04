@@ -11,11 +11,11 @@
             th:hideEmptyOption="${hideEmptyOption}"
             th:readonly="${readonly}">
 
-        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">[[#{label.common.choose}]]</option>
+        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">Select</option>
         <option
                 th:each="item: ${list}"
                 th:value="${item.id}"
-                th:text="${ lang == 'en'? item.nameEn: item.nameBn }">
+                th:text="${item.nameEn}">
         </option>
     </select>
 
@@ -32,18 +32,17 @@
             th:value="*{__${value}__}"
     >
 
-        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">[[#{label.common.choose}]]</option>
+        <option th:if="${hideEmptyOption == null || hideEmptyOption == false}" value="">Select</option>
         <option
                 th:each="item: ${list}"
                 th:value="${item.id}"
-                th:text="${ lang == 'en'? item.nameEn: item.nameBn }"
+                th:text="${item.nameEn}"
                 th:selected="${item.id == selectedValue}"
         >
         </option>
     </select>
 
-    <label th:for="${id}" class="select-label">
-        [[#{${label}}]]
+    <label th:for="${id}" class="select-label" th:text="${label}">
         <span th:if="${ required == true }" class="text-danger">*</span>
     </label>
 </div>

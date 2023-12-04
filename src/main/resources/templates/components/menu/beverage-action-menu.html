@@ -11,6 +11,21 @@
     </a>
 
 </li>
+
+<li
+        th:classappend="${ menuPath != null and menuPath.contains(Menu.BOTTLE_ADD)? 'menu-item-here menu-item-open':'' }"
+        class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"
+>
+
+    <a th:href="@{/bottle/search}" class="menu-link">
+                    <span class="svg-icon menu-icon">
+                        <img class="menu-logo" th:src="@{/images/side-menu-icons/icon_dia_3.svg}" alt=""/>
+                    </span>
+        <span class="menu-text"> Bottle Add </span>
+    </a>
+
+</li>
+
 <li
         th:classappend="${ menuPath != null and menuPath.contains(Menu.BEVERAGE_VIEW)? 'menu-item-here menu-item-open':'' }"
         class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"

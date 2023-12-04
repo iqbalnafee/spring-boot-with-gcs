@@ -1,0 +1,47 @@
+
+<script th:src="@{/js/paginate-input.js}"></script>
+<script th:src="@{/js/search-action.js}"></script>
+
+<script>
+
+    const bottleSearch = searchAction('api/bottle/list', 'bottleAddSearchNav');
+    $(document).ready(() => {
+        bottleSearch.reloadData(1, 10);
+        $('#bottle-search-btn').click(e => {
+            e.preventDefault();
+            pagingClosure.pageClick(1);
+        });
+    });
+
+    function reloadData(pageNo, pageSize) {
+        bottleSearch.reloadData(pageNo, pageSize);
+    }
+
+    function setTableContent(data) {
+        let tableBody = "";
+        data.list.forEach((e,count) => {
+            tableBody += `
+                <tr id="${e.id}">
+                    <td>${count+1}</td>
+                    <td>${e.bottleNameEn}</td>
+                    <td>${e.bottleNameDe}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button class="btn" title="Edit"
+                                    onclick="location.href='/edit/${e.id}'">
+                                <i class="fa fa-edit text-primary"></i>
+                            </button>
+                            <button class="btn" title="Delete"
+                                onclick="bottleSearch.deleteItem(bottleSearch,${e.id},null,null,'/api/beverage',
+                                'Do you want to delete ')">
+                                <i class="fa fa-trash text-danger"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+        $('#bottle_add_search_table_body').html(tableBody);
+    }
+
+</script>

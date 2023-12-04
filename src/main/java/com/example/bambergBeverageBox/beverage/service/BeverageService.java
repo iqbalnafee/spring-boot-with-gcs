@@ -3,6 +3,7 @@ package com.example.bambergBeverageBox.beverage.service;
 import com.example.bambergBeverageBox.beverage.model.Beverage;
 import com.example.bambergBeverageBox.beverage.model.BeverageAddRequest;
 import com.example.bambergBeverageBox.beverage.model.BeverageSearchRequest;
+import com.example.bambergBeverageBox.util.DropdownOptionResponse;
 import com.example.bambergBeverageBox.util.SearchPageRestResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.springframework.data.jpa.domain.Specification.where;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -24,13 +24,14 @@ import static org.springframework.data.jpa.domain.Specification.where;
 public class BeverageService {
 
     private final BeverageRepository beverageRepository;
+
     public Beverage save(BeverageAddRequest beverageAddRequest) {
         Beverage beverage = new Beverage();
-        if(beverageAddRequest.getId() != null) {
+        if (beverageAddRequest.getId() != null) {
             Optional<Beverage> optionalBeverage = beverageRepository.findById(beverageAddRequest.getId());
-            if(optionalBeverage.isPresent()) beverage = optionalBeverage.get();
+            if (optionalBeverage.isPresent()) beverage = optionalBeverage.get();
         }
-        getBeverageFromAddRequest(beverage,beverageAddRequest);
+        getBeverageFromAddRequest(beverage, beverageAddRequest);
         return beverageRepository.save(beverage);
     }
 
@@ -43,7 +44,7 @@ public class BeverageService {
     }
 
     public Page<Beverage> getBeverageByNameEnAndNameDe(String nameEn, String nameDe,
-                                                                               Integer pageNo, Integer pageSize) {
+                                                       Integer pageNo, Integer pageSize) {
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, Sort.by(List.of(
                 Sort.Order.desc("id")
@@ -72,5 +73,23 @@ public class BeverageService {
 
     public Optional<Beverage> findById(Long id) {
         return beverageRepository.findById(id);
+    }
+
+    public List<Beverage> getAllBeverages() {
+        return beverageRepository.findAll();
+    }
+
+    public List<DropdownOptionResponse> getBeverageDropdownList() {
+        return getAllBeverages().stream()
+                .map(this::buildDropdownOption)
+                .collect(Collectors.toList());
+    }
+
+    public DropdownOptionResponse buildDropdownOption(Beverage beverage) {
+        return DropdownOptionResponse.builder()
+                .id(beverage.getId())
+                .nameEn(beverage.getBeverageNameEn())
+                .nameDe(beverage.getBeverageNameDe())
+                .build();
     }
 }

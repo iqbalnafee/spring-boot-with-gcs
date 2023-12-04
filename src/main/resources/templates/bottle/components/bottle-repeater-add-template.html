@@ -1,0 +1,129 @@
+<div data-repeater-item th:each="bottleAddRequest, stateIm: *{bottleAddRequestList}">
+
+    <div class="section-number-container-tab6">
+        <span class="section-number" th:text="${stateIm.index + 1}"></span>
+    </div>
+
+    <div class="form-group mt-5">
+        <div class="row">
+            <input type="hidden"
+                   th:name="${ 'bottleAddRequestList[' + stateIm.index + '].id' }"
+                   th:value="*{{ bottleAddRequestList[__${stateIm.index}__].id }}"
+                   data-repeater-set-id-equal-to-name="true"
+            />
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="label='Beverage',
+                                    field=${'bottleAddRequestList['+stateIm.index + '].beverageId'},
+                                    list=${beverageList},
+                                    class=${'enable-select2'},
+                                    style=${'width:100%'},
+                                    required=${true},
+                                    multiple=${false}"
+                        th:include="components/inputs/select2-list-input">
+                </th:block>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="type=${'text'},
+                                 field=${'bottleAddRequestList['+stateIm.index + '].bottleNameEn'},
+                                 required=${true},
+                                 type=${'text'},
+                                 label='Bottle Name English'"
+                        th:include="components/inputs/text-input"
+                >
+                </th:block>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="type=${'text'},
+                                 field=${'bottleAddRequestList['+stateIm.index + '].bottleNameDe'},
+                                 required=${true},
+                                 type=${'text'},
+                                 label='Bottle Name Deutsch'"
+                        th:include="components/inputs/text-input"
+                >
+                </th:block>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="type=${'text'},
+                                 field=${'bottleAddRequestList['+stateIm.index + '].bottlePic'},
+                                 required=${true},
+                                 type=${'text'},
+                                 label='Bottle Picture (URL)'"
+                        th:include="components/inputs/text-input"
+                >
+                </th:block>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="type=${'text'},
+                                 field=${'bottleAddRequestList['+stateIm.index + '].volume'},
+                                 required=${true},
+                                 numbertype=${'float'},
+                                 max=${'22'},
+                                 label='Volume'"
+                        th:include="components/inputs/text-input"
+                >
+                </th:block>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="type=${'text'},
+                                 field=${'bottleAddRequestList['+stateIm.index + '].volumePercent'},
+                                 required=${true},
+                                 numbertype=${'float'},
+                                 max=${'22'},
+                                 label='Volume Percent (%)'"
+                        th:include="components/inputs/text-input"
+                >
+                </th:block>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="type=${'text'},
+                                 field=${'bottleAddRequestList['+stateIm.index + '].price'},
+                                 required=${true},
+                                 numbertype=${'float'},
+                                 max=${'22'},
+                                 label='Price'"
+                        th:include="components/inputs/text-input"
+                >
+                </th:block>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="type=${'text'},
+                                 field=${'bottleAddRequestList['+stateIm.index + '].supplier'},
+                                 required=${true},
+                                 label='supplier'"
+                        th:include="components/inputs/text-input"
+                >
+                </th:block>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <th:block
+                        th:with="label='Stock', field=${'bottleAddRequestList['+stateIm.index + '].inStock'},
+	                                type=${'text'},numbertype=${'int'}, required=${true}"
+                        th:include="components/inputs/text-input">
+                </th:block>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <div class="input-group-append">
+                    <a href="javascript:;" class="btn font-weight-bold btn-danger btn-icon"
+                       data-repeater-delete="">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

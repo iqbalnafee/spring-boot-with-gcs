@@ -60,4 +60,8 @@ public class BeverageModelService {
         }
         return beverageAddRequest;
     }
+
+    public Object getBeverageDropdownList() {
+        return beverageService.getBeverageDropdownList();
+    }
 }
