@@ -4,170 +4,44 @@
 
 <script>
 
-    // const brandSearch = searchAction('/api/im-machine-category/list', 'machineCategorySearchNav');
-    // $(document).ready(() => {
-    //     brandSearch.reloadData(1, 10);
-    //     $('#machine-category-search-btn').click(e => {
-    //         e.preventDefault();
-    //         pagingClosure.pageClick(1);
-    //     });
-    // });
-    //
-    // function reloadData(pageNo, pageSize) {
-    //     brandSearch.reloadData(pageNo, pageSize);
-    // }
-    //
-    // function setTableContent(data) {
-    //     let tableBody = "";
-    //     data.list.forEach((e,count) => {
-    //         tableBody += `
-    //             <tr id="${e.id}">
-    //                 <td>${count+1}</td>
-    //                 <td>${e.machineCategoryNameEn}</td>
-    //                 <td>${e.machineCategoryNameBn}</td>
-    //                 <td>
-    //                     <div class="btn-group" role="group" aria-label="Basic example">
-    //                         <button class="btn" title="Edit"
-    //                                 onclick="location.href='${commonProp.defaultSuccessUrl}/im-machine-category/edit/${e.id}'">
-    //                             <i class="fa fa-edit text-primary"></i>
-    //                         </button>
-    //                         <button class="btn" title="Delete"
-    //                             onclick="brandSearch.deleteItem(brandSearch,${e.id},null,null,'/api/im-machine-category',
-    //                             commonProp.isLanguageEng?\`Do you want to delete ${e.machineCategoryNameEn}?\`:\`আপনি কি ${e.machineCategoryNameBn}কে ডিলিট করতে চান?\`)">
-    //                             <i class="fa fa-trash text-danger"></i>
-    //                         </button>
-    //                     </div>
-    //                 </td>
-    //             </tr>
-    //         `;
-    //     });
-    //     $('#machine_category_search_table_body').html(tableBody);
-    // }
+    const beverageSearch = searchAction('api/beverage/list', 'beverageAddSearchNav');
+    $(document).ready(() => {
+        beverageSearch.reloadData(1, 10);
+        $('#beverage-search-btn').click(e => {
+            e.preventDefault();
+            pagingClosure.pageClick(1);
+        });
+    });
+
+    function reloadData(pageNo, pageSize) {
+        beverageSearch.reloadData(pageNo, pageSize);
+    }
+
+    function setTableContent(data) {
+        let tableBody = "";
+        data.list.forEach((e,count) => {
+            tableBody += `
+                <tr id="${e.id}">
+                    <td>${count+1}</td>
+                    <td>${e.beverageNameEn}</td>
+                    <td>${e.beverageNameDe}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button class="btn" title="Edit"
+                                    onclick="location.href='/edit/${e.id}'">
+                                <i class="fa fa-edit text-primary"></i>
+                            </button>
+                            <button class="btn" title="Delete"
+                                onclick="beverageSearch.deleteItem(beverageSearch,${e.id},null,null,'/api/beverage',
+                                'Do you want to delete ')">
+                                <i class="fa fa-trash text-danger"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+        $('#beverage_add_search_table_body').html(tableBody);
+    }
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<script>-->
-<!--    $( document ).ready( function() {-->
-
-<!--        let vehicleSearchTable = $( '#imBrandSearch' ).DataTable( {-->
-<!--            ...{-->
-<!--                ajax: {-->
-<!--                    url: context + '/api/im-brand/search',-->
-<!--                    type: 'GET'-->
-<!--                },-->
-<!--                order: [-->
-<!--                    [0, "desc"]-->
-<!--                ],-->
-<!--                columns: [-->
-<!--                    {-->
-<!--                        data: 'id',-->
-<!--                        -->
-<!--                        render: function (data, type, row, meta) {-->
-<!--                            return meta.row + meta.settings._iDisplayStart + 1;-->
-<!--                        }-->
-<!--                    },-->
-
-
-
-<!--                    {-->
-<!--                        data: 'brandNameEn',-->
-<!--                        orderable: false-->
-<!--                    },-->
-<!--                    {-->
-<!--                        data: 'brandNameBn',-->
-<!--                        orderable: false-->
-<!--                    },-->
-
-<!--                    // {-->
-<!--                    //     data: 'documentMetadataList',-->
-<!--                    //     render: function ( data, type, row ) {-->
-<!--                    //-->
-<!--                    //         if( data != null ) {-->
-<!--                    //-->
-<!--                    //             let files = "<ul>";-->
-<!--                    //             for (let i = 0; i < data.length; i++) {-->
-<!--                    //-->
-<!--                    //                 files += '<li><a target="_blank" href="' + context + '/doc/' + data[i].id + '">' + data[i].name + '</a></li>';-->
-<!--                    //             }-->
-<!--                    //             files += "</ul>";-->
-<!--                    //             return files;-->
-<!--                    //         }-->
-<!--                    //         else{-->
-<!--                    //             return "";-->
-<!--                    //         }-->
-<!--                    //     },-->
-<!--                    //     searchable: false,-->
-<!--                    //     orderable: false-->
-<!--                    // },-->
-<!--                    {-->
-<!--                        data: 'id',-->
-<!--                        render: function ( data, type, row ) {-->
-<!--                            return '<div style="white-space:nowrap;">' +-->
-<!--                                '<a href="' + context + '/im-brand/edit/'+ data +'" class="btn btn-sm btn-clean btn-icon pr-5" title="Edit">\t\t\t\t\t\t\t\t<i class="la la-edit icon-xl text-primary"></i>\t\t\t\t\t\t\t</a>' +-->
-<!--                                '<a href="javascript:;" class="btn btn-sm btn-clean btn-icon delete-brand pr-7" data-id="' + data + '" title="Delete">\t\t\t\t\t\t\t\t<i class="la la-trash icon-xl text-danger" data-id="' + data + '"></i>\t\t\t\t\t\t\t</a>' +-->
-<!--                                '</div>';-->
-<!--                        },-->
-<!--                        searchable: false,-->
-<!--                        orderable: false,-->
-<!--                        responsivePriority: -1-->
-<!--                    }-->
-<!--                ]-->
-<!--            },-->
-<!--            ...dataTableCommonConfig-->
-<!--        });-->
-
-<!--        $(document).on( "click", ".delete-brand", (e) => {-->
-
-<!--            let id = $( e.target ).data( "id" );-->
-<!--            poolConfirm(-->
-<!--                {-->
-<!--                    title: poolConfirmation,-->
-<!--                    text: poolRevertConfirmation,-->
-<!--                    icon: "warning",-->
-<!--                    showCancelButton: true,-->
-<!--                    confirmButtonText: poolConfirmYes,-->
-<!--                    cancelButtonText: poolConfirmNo-->
-<!--                },-->
-<!--                (result) => {-->
-
-<!--                    let param = {};-->
-<!--                    param[csrfParamName] = csrf;-->
-
-<!--                    callAjax(-->
-<!--                        "/api/im-brand/" + id,-->
-<!--                        param,-->
-<!--                        "DELETE",-->
-<!--                        ( data ) => {-->
-
-<!--                            Swal.fire(-->
-<!--                                "Deleted!",-->
-<!--                                data[ 'message' ],-->
-<!--                                "success"-->
-<!--                            );-->
-
-<!--                            vehicleSearchTable.ajax.reload( null, false );-->
-<!--                        },-->
-<!--                        ( data ) => {-->
-
-<!--                            commonErrorCallbackSwal( data );-->
-<!--                        }-->
-<!--                    );-->
-<!--                }-->
-<!--            );-->
-<!--        });-->
-<!--    });-->
-
-<!--</script>-->

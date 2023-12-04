@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script>
+    const commonProp = (function () {
+
+        let defaultSuccessUrl = '[[${defaultSuccessUrl}]]';
+        return Object.freeze({
+
+            defaultSuccessUrl: defaultSuccessUrl,
+
+        });
+    })();
+</script>
+
+
 <th:block th:replace="components/head"></th:block>
 <!--end::Head-->
 <!--begin::Body-->

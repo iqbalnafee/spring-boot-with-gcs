@@ -42,7 +42,7 @@ const searchAction = (reloadUrl = requiredMissing('reload url parameter is requi
         let params = `pageNo=${pageNo}&pageSize=${pageSize}`;
         if (document.getElementsByClassName('li_3').length > 0) {
             const startPage = document.getElementsByClassName('li_3')[0].textContent.trim();
-            params += `&startPage=${utilFunction.convertBanDigitsToEngDigits(startPage)}`;
+            params += `&startPage=${startPage}`;
         }
         if (searchNav) {
             const searchParams = $('#' + searchNav).serializeArray()
@@ -55,7 +55,7 @@ const searchAction = (reloadUrl = requiredMissing('reload url parameter is requi
                 })
                 .map(e => helperParams.doNotConvertToEnglish ?
                     `${encodeURIComponent(e.name)}=${encodeURIComponent(e.value)}` :
-                    `${encodeURIComponent(e.name)}=${encodeURIComponent(utilFunction.convertBanDigitsToEngDigits(e.value))}`)
+                    `${encodeURIComponent(e.name)}=${encodeURIComponent(e.value)}`)
                 .join("&");
             if (searchParams) {
                 params += `&${searchParams}`;
@@ -103,66 +103,34 @@ const searchAction = (reloadUrl = requiredMissing('reload url parameter is requi
                 errorCallBack(err);
             });
         },
-        deleteItem: (self, id, nameEn, nameBn, url, deletePopupMsg, successMsgEn, successMsgBn, failMsgEn, failMsgBn) => {
-            deletePopupMsg = deletePopupMsg ? deletePopupMsg : commonProp.isLanguageEng ? `Do you want to delete ${nameEn}?` : `আপনি কি ${nameBn} টি ডিলিট করতে চান?`;
-            deleteDialog(deletePopupMsg, null, commonProp.isLanguageEng, () => {
-                executeURL(`${commonProp.defaultSuccessUrl}${url}/${id}`, data => {
-                    let msg;
-                    if (data.success) {
-                        CustomToast.successToast(commonProp.deleteSuccessMessage);
-                        self.reloadData(pagingClosure.getCurrentPage(), pagingClosure.getPageSize());
-                    } else {
+        // /*deleteItem: (self, id, nameEn, nameBn, url, deletePopupMsg, successMsgEn, successMsgBn, failMsgEn, failMsgBn) => {
+        //     deletePopupMsg = `Do you want to delete ?`;
+        //     deleteDialog(deletePopupMsg, null, commonProp.isLanguageEng, () => {
+        //         executeURL(`${commonProp.defaultSuccessUrl}${url}/${id}`, data => {
+        //             let msg;
+        //             if (data.success) {
+        //                 CustomToast.successToast(commonProp.deleteSuccessMessage);
+        //                 self.reloadData(pagingClosure.getCurrentPage(), pagingClosure.getPageSize());
+        //             } else {
+        //
+        //                 if (failMsgEn !== null && failMsgEn !== undefined && failMsgEn !== '' &&
+        //                     failMsgBn !== null && failMsgBn !== undefined && failMsgBn !== '') {
+        //                     msg = commonProp.isLanguageEng ? failMsgEn : failMsgBn;
+        //                 }
+        //                 else if (data.message !== undefined && data.message.toString().trim().length !== 0 ) {
+        //                     CustomToast.errorToast(data.message);
+        //                 }
+        //                 else
+        //                     msg = commonProp.deleteFailMessage;
+        //                 CustomToast.errorToast(msg);
+        //             }
+        //         }, () => {
+        //             CustomToast.errorToast(commonProp.deleteFailMessage);
+        //         }, 'DELETE');
+        //     });
+        // },*/
 
-                        if (failMsgEn !== null && failMsgEn !== undefined && failMsgEn !== '' &&
-                            failMsgBn !== null && failMsgBn !== undefined && failMsgBn !== '') {
-                            msg = commonProp.isLanguageEng ? failMsgEn : failMsgBn;
-                        }
-                        else if (data.message !== undefined && data.message.toString().trim().length !== 0 ) {
-                            CustomToast.errorToast(data.message);
-                        }
-                        else
-                            msg = commonProp.deleteFailMessage;
-                        CustomToast.errorToast(msg);
-                    }
-                }, () => {
-                    CustomToast.errorToast(commonProp.deleteFailMessage);
-                }, 'DELETE');
-            });
-        },
-        disableItem: (self, id, nameEn, nameBn, url, deletePopupMsg) => {
-            deletePopupMsg = deletePopupMsg ? deletePopupMsg : commonProp.isLanguageEng ? `Do you want to delete ${nameEn}?` : `আপনি কি ${nameBn} টি ডিলিট করতে চান?`;
-            let deleteButton = !commonProp.isLanguageEng ? 'নিষ্ক্রিয়' : 'Disable';
-            let cancelButton = !commonProp.isLanguageEng ? 'বাতিল' : 'Cancel';
-            deleteDialogWithButtonText(deleteButton, cancelButton, deletePopupMsg, ' ', commonProp.isLanguageEng, () => {
-                executeURL(`${commonProp.defaultSuccessUrl}${url}/${id}`, data => {
-                    if (data.success) {
-                        CustomToast.successToast(commonProp.isLanguageEng ? 'Disabled successfully' : 'সফলভাবে নিষ্ক্রিয় হয়েছে।');
-                        self.reloadData(pagingClosure.getCurrentPage(), pagingClosure.getPageSize());
-                    } else {
-                        CustomToast.errorToast(commonProp.isLanguageEng ? 'Failed to disable' : 'নিষ্ক্রিয় করতে ব্যার্থ হয়েছে।');
-                    }
-                }, () => {
-                    CustomToast.errorToast(commonProp.isLanguageEng ? 'Failed to disable' : 'নিষ্ক্রিয় করতে ব্যার্থ হয়েছে।');
-                }, 'POST');
-            });
-        },
-        enableItem: (self, id, nameEn, nameBn, url, deletePopupMsg) => {
-            deletePopupMsg = deletePopupMsg ? deletePopupMsg : commonProp.isLanguageEng ? `Do you want to delete ${nameEn}?` : `আপনি কি ${nameBn} টি ডিলিট করতে চান?`;
-            let deleteButton = !commonProp.isLanguageEng ? 'সক্রিয়' : 'Enable';
-            let cancelButton = !commonProp.isLanguageEng ? 'বাতিল' : 'Cancel';
-            deleteDialogWithButtonText(deleteButton, cancelButton, deletePopupMsg, ' ', commonProp.isLanguageEng, () => {
-                executeURL(`${commonProp.defaultSuccessUrl}${url}/${id}`, data => {
-                    if (data.success) {
-                        CustomToast.successToast(commonProp.isLanguageEng ? 'Enabled successfully' : 'সফলভাবে সক্রিয় হয়েছে।');
-                        self.reloadData(pagingClosure.getCurrentPage(), pagingClosure.getPageSize());
-                    } else {
-                        CustomToast.errorToast(commonProp.isLanguageEng ? 'Failed to enable' : 'সক্রিয় করতে ব্যার্থ হয়েছে।');
-                    }
-                }, () => {
-                    CustomToast.errorToast(commonProp.isLanguageEng ? 'Failed to enable' : 'নিষ্ক্রিয় করতে ব্যার্থ হয়েছে।');
-                }, 'POST');
-            });
-        },
+
         execute: (url, success, failed, met = 'GET') => {
             executeURL(url, success, failed, met);
         },

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
@@ -38,6 +39,17 @@ public class BeverageController extends MVCController {
 
         log.debug("Rendering Beverage Add Page");
         beverageModelService.addBeverageModel(model);
+        return viewRoot;
+    }
+
+    @GetMapping(value = "/edit/{id}")
+    @TitleAndContent(title = "Add Beverage", content = "beverage/add", activeMenu = Menu.BEVERAGE_ADD)
+    public String edit(
+            Model model,
+            @PathVariable("id") Long id) {
+
+        log.debug("Rendering Beverage Edit Page");
+        beverageModelService.editBeverageModel(model,id);
         return viewRoot;
     }
     @GetMapping(value = "/search")
