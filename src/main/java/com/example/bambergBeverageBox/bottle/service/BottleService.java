@@ -79,4 +79,12 @@ public class BottleService {
     public void deleteById(Long id) {
         bottleRepository.deleteById(id);
     }
+
+    public List<Bottle> findBottleByBeverageIdIn(List<Long> beverageId){
+        return bottleRepository.findBottleByBeverageIdIn(beverageId);
+    }
+
+    public List<Bottle> findBottleByBeverageId(Long beverageId){
+        return bottleRepository.findBottleByBeverageId(beverageId);
+    }
 }

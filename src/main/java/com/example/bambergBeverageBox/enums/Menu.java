@@ -10,7 +10,8 @@ public enum Menu {
     BEVERAGE(null),
     BEVERAGE_ADD(BEVERAGE),
     BOTTLE_ADD(BEVERAGE),
-    BEVERAGE_VIEW(BEVERAGE);
+    BEVERAGE_VIEW(BEVERAGE),
+    PRODUCTS(null);
 
     private final Menu parentMenu;
 

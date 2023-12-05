@@ -1,9 +1,6 @@
 package com.example.bambergBeverageBox.beverage.service;
 
-import com.example.bambergBeverageBox.beverage.model.Beverage;
-import com.example.bambergBeverageBox.beverage.model.BeverageAddRequest;
-import com.example.bambergBeverageBox.beverage.model.BeverageSearchRequest;
-import com.example.bambergBeverageBox.beverage.model.BeverageTotalRequest;
+import com.example.bambergBeverageBox.beverage.model.*;
 import com.example.bambergBeverageBox.util.SearchPageRestResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -63,5 +60,14 @@ public class BeverageModelService {
 
     public Object getBeverageDropdownList() {
         return beverageService.getBeverageDropdownList();
+    }
+
+    public void getAllProducts(Model model) {
+
+
+    }
+
+    public List<BeverageResponse> getAllBeverageResponseList() {
+        return beverageService.getAllBeverageResponseList();
     }
 }

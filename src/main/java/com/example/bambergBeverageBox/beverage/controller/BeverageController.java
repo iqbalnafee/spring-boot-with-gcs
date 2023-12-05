@@ -15,21 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping(path = "/")
+@RequestMapping(path = "/beverage")
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class BeverageController extends MVCController {
 
     private final BeverageModelService beverageModelService;
-
-    @GetMapping
-    @TitleAndContent(title = "Beverage", content = "beverage/view", activeMenu = Menu.BEVERAGE_VIEW)
-    public String view(
-            Model model
-    ) {
-
-        log.debug("Rendering Product Page");
-        return viewRoot;
-    }
 
     @GetMapping(value = "/add")
     @TitleAndContent(title = "Add Beverage", content = "beverage/add", activeMenu = Menu.BEVERAGE_ADD)
