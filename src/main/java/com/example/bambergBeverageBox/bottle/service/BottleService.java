@@ -75,4 +75,8 @@ public class BottleService {
     public Optional<Bottle> findById(Long id) {
         return bottleRepository.findById(id);
     }
+
+    public void deleteById(Long id) {
+        bottleRepository.deleteById(id);
+    }
 }

@@ -58,4 +58,12 @@ public class BottleRestController {
         return RestResponse.ofSuccess("Data saved success");
     }
 
+    @DeleteMapping("/{id}")
+    public RestResponse<String> delete(@PathVariable("id") Long id) {
+
+        boolean isBottleDeleted = bottleModelService.delete(id);
+        return isBottleDeleted ? RestResponse.ofSuccess("Data deleted successfully") :
+                RestResponse.ofError("Data deleted failed");
+    }
+
 }

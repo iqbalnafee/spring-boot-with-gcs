@@ -1,3 +1,4 @@
+let timeoutVar;
 function requiredMissing(errorMsg = 'Required param is missing') {
     throw new Error(errorMsg);
 }
@@ -103,32 +104,23 @@ const searchAction = (reloadUrl = requiredMissing('reload url parameter is requi
                 errorCallBack(err);
             });
         },
-        // /*deleteItem: (self, id, nameEn, nameBn, url, deletePopupMsg, successMsgEn, successMsgBn, failMsgEn, failMsgBn) => {
-        //     deletePopupMsg = `Do you want to delete ?`;
-        //     deleteDialog(deletePopupMsg, null, commonProp.isLanguageEng, () => {
-        //         executeURL(`${commonProp.defaultSuccessUrl}${url}/${id}`, data => {
-        //             let msg;
-        //             if (data.success) {
-        //                 CustomToast.successToast(commonProp.deleteSuccessMessage);
-        //                 self.reloadData(pagingClosure.getCurrentPage(), pagingClosure.getPageSize());
-        //             } else {
-        //
-        //                 if (failMsgEn !== null && failMsgEn !== undefined && failMsgEn !== '' &&
-        //                     failMsgBn !== null && failMsgBn !== undefined && failMsgBn !== '') {
-        //                     msg = commonProp.isLanguageEng ? failMsgEn : failMsgBn;
-        //                 }
-        //                 else if (data.message !== undefined && data.message.toString().trim().length !== 0 ) {
-        //                     CustomToast.errorToast(data.message);
-        //                 }
-        //                 else
-        //                     msg = commonProp.deleteFailMessage;
-        //                 CustomToast.errorToast(msg);
-        //             }
-        //         }, () => {
-        //             CustomToast.errorToast(commonProp.deleteFailMessage);
-        //         }, 'DELETE');
-        //     });
-        // },*/
+        deleteItem: (self, id, url, deletePopupMsg) => {
+            deletePopupMsg = `Do you want to delete ?`;
+            deleteDialog(deletePopupMsg, null, () => {
+                executeURL(`${commonProp.defaultSuccessUrl}${url}/${id}`, data => {
+                    let msg;
+                    if (data.success) {
+                        CustomToast.successToast('Deleted Successfully!');
+                        self.reloadData(pagingClosure.getCurrentPage(), pagingClosure.getPageSize());
+                    } else {
+
+                        CustomToast.errorToast('Can not delete!');
+                    }
+                }, () => {
+                    CustomToast.errorToast('Can not delete');
+                }, 'DELETE');
+            });
+        },
 
 
         execute: (url, success, failed, met = 'GET') => {
@@ -139,3 +131,96 @@ const searchAction = (reloadUrl = requiredMissing('reload url parameter is requi
         isLoadInitially: () => loadInitially
     })
 };
+
+function deleteDialog(deleteMsg, message, successFunction, cancelFunction) {
+    if (!message) {
+        message =  "You will not be able to revert.";
+    }
+    if (!deleteMsg) {
+        deleteMsg =  'Do you want to delete?';
+    }
+    const deleteButtonText = 'Delete';
+    const cancelButtonText = 'Cancel';
+    messageDialog(deleteMsg, message, 'error', true, deleteButtonText, cancelButtonText, successFunction, cancelFunction);
+}
+
+function messageDialog(title, message, type, showCancelButton, confirmButtonText, cancelButtonText, successFunction, cancelFunction) {
+    swal.fire({
+        title: title,
+        text: message,
+        icon: type,
+        showCancelButton: showCancelButton,
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: cancelButtonText
+    }).then(function (result) {
+        if (result.value) {
+            if (successFunction && typeof successFunction == 'function') {
+                successFunction();
+            }
+        } else {
+            if (cancelFunction && typeof cancelFunction == 'function') {
+                cancelFunction();
+            }
+        }
+    });
+}
+
+class CustomToast {
+    static DEFAULT_FADE_TIME_MS = 10000;
+    static toastClass = "custom-toast";
+    static showClass = "custom-toast-show";
+    static messageClass = "custom-toast-message";
+    static closeBtnClass = "custom-toast-close";
+    static $successToastDiv = $('#success-toast-div');
+    static $errorToastDiv = $('#error-toast-div');
+
+    static showToast($toastDiv, showClassName) {
+        $toastDiv.addClass(showClassName);
+    }
+
+    static hideToast($toastDiv) {
+        $toastDiv.removeClass(CustomToast.showClass);
+    }
+
+    static show($toastDiv, message, timeOutInMs, callback) {
+        clearTimeout(timeoutVar);
+        CustomToast.hideSuccessToast();
+        CustomToast.hideErrorToast();
+        $toastDiv.find(`.${CustomToast.messageClass}`).text(message);
+
+        CustomToast.showToast($toastDiv, CustomToast.showClass);
+        if (timeOutInMs) {
+            timeoutVar=setTimeout(() => {
+                CustomToast.hideToast($toastDiv);
+                if(callback && typeof callback === 'function'){
+                    callback();
+                }
+            }, timeOutInMs);
+        }
+    }
+
+    static success(message, timeOutInMs, callback) {
+        CustomToast.show(CustomToast.$successToastDiv, message, timeOutInMs, callback);
+    }
+
+    static successToast(message, callback) {
+        CustomToast.show(CustomToast.$successToastDiv, message, CustomToast.DEFAULT_FADE_TIME_MS, callback);
+    }
+
+    static error(message, timeOutInMs, callback) {
+        CustomToast.show(CustomToast.$errorToastDiv, message, timeOutInMs, callback);
+    }
+
+    static errorToast(message, callback) {
+        CustomToast.show(CustomToast.$errorToastDiv, message, CustomToast.DEFAULT_FADE_TIME_MS, callback);
+    }
+
+    static hideErrorToast() {
+        console.debug('hide error toast is called');
+        CustomToast.hideToast(CustomToast.$errorToastDiv);
+    }
+
+    static hideSuccessToast() {
+        CustomToast.hideToast(CustomToast.$successToastDiv);
+    }
+}

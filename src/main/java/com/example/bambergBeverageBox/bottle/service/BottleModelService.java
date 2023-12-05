@@ -61,4 +61,9 @@ public class BottleModelService {
     public void addBottlePost(List<BottleAddRequest> bottleAddRequestList) {
         bottleAddRequestList.forEach(bottleService::save);
     }
+
+    public boolean delete(Long id) {
+        bottleService.deleteById(id);
+        return true;
+    }
 }
