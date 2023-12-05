@@ -10,6 +10,7 @@
 
             show: function () {
                 $(this).slideDown();
+                $(".enable-select2").select2();
                 assignSectionNumber(this, 'section-number');
             },
 
@@ -72,7 +73,7 @@
     }
 
     function redirectToSearch(){
-        window.location.href= '/search';
+        window.location.href= '/bottle/search';
     }
 
     function successToast(msg, successFun, res) {

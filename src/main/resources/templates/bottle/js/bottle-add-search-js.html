@@ -19,16 +19,24 @@
 
     function setTableContent(data) {
         let tableBody = "";
+        const height = 100;
+        const width = 100;
         data.list.forEach((e,count) => {
             tableBody += `
                 <tr id="${e.id}">
-                    <td>${count+1}</td>
+                    <td>${count + 1}</td>
                     <td>${e.bottleNameEn}</td>
-                    <td>${e.bottleNameDe}</td>
+                    <td>
+                      <img src="${e.bottlePic}" width="${width}" height="${height}" alt="Image">
+                    </td>
+                    <td>${e.volume}</td>
+                    <td>${e.price}</td>
+                    <td>${e.supplier}</td>
+                    <td>${e.inStock}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button class="btn" title="Edit"
-                                    onclick="location.href='/edit/${e.id}'">
+                                    onclick="location.href='/bottle/edit/${e.id}'">
                                 <i class="fa fa-edit text-primary"></i>
                             </button>
                             <button class="btn" title="Delete"

@@ -43,7 +43,9 @@ public class BottleController extends MVCController {
             @PathVariable("id") Long id) {
 
         log.debug("Rendering Bottle Edit Page");
-        bottleModelService.editBeverageModel(model,id);
+        bottleModelService.editBottleModel(model,id);
+        model.addAttribute("beverageList",
+                beverageModelService.getBeverageDropdownList());
         return viewRoot;
     }
     @GetMapping(value = "/search")

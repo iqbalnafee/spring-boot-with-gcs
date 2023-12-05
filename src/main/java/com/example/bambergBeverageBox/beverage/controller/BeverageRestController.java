@@ -36,7 +36,7 @@ public class BeverageRestController {
             }
         } catch (Exception e) {
             log.error("", e);
-            return RestResponse.ofError("failure.common.action.data-save-failed");
+            return RestResponse.ofError("Data saved failure");
         }
         return RestResponse.ofSuccess("Data saved success");
     }

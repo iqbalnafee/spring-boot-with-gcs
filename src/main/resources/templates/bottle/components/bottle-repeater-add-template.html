@@ -65,7 +65,7 @@
                                  required=${true},
                                  numbertype=${'float'},
                                  max=${'22'},
-                                 label='Volume'"
+                                 label='Volume (In Litre)'"
                         th:include="components/inputs/text-input"
                 >
                 </th:block>
@@ -91,7 +91,7 @@
                                  required=${true},
                                  numbertype=${'float'},
                                  max=${'22'},
-                                 label='Price'"
+                                 label='Price (€)'"
                         th:include="components/inputs/text-input"
                 >
                 </th:block>
@@ -116,7 +116,7 @@
                 </th:block>
             </div>
 
-            <div class="col-md-6 col-xl-4">
+            <div class="col-md-6 col-xl-4" th:if="${bottleTotalRequest.editable == false}">
                 <div class="input-group-append">
                     <a href="javascript:;" class="btn font-weight-bold btn-danger btn-icon"
                        data-repeater-delete="">
