@@ -133,7 +133,7 @@ public class BeverageService {
             beverageResponse.setAlcoholic(bottle.getVolumePercent()>10);
             beverageResponse.setPrice(bottle.getPrice()+" €");
             beverageResponse.setSupplier(bottle.getSupplier());
-            beverageResponse.setInStock(bottle.getInStock());
+            beverageResponse.setInStock(bottle.getInStock()+" pieces left");
         }
     }
 }

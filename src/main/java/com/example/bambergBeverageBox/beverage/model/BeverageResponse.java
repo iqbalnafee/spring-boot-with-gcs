@@ -20,7 +20,7 @@ public class BeverageResponse {
     private Double volumePercent;
     private String price;
     private String supplier;
-    private Integer inStock;
+    private String inStock;
 
     /*for bottles end*/
 
