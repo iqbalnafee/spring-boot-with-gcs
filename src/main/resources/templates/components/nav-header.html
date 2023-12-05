@@ -11,63 +11,13 @@
         background: transparent;
     }
 
-    /*for notification*/
-    .notification-container {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        margin: 0 0 1rem 0;
-        padding: 1rem;
-        border-radius: 8px;
-    }
 
-    .notification-read {
-        background: #fff;
-    }
-
-    .notification-unread {
-        background: #cfd8dc !important;
-    }
-
-    .notification-info-wrapper {
-        margin-left: 1rem;
-    }
-
-    .notification-container:hover,
-    .notification-container:focus {
-        text-decoration: none;
-        background-color: #f5f6f7;
-        box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
-    }
-
-    .notification-owner-img {
-        border-radius: 100%;
-        border: 1px solid #d2d2d2;
-    }
-
-    .notification-owner-name {
-        font-weight: 600;
-        color: #323233;
-    }
-
-    .notification-text {
-        color: #515151;
-        font-weight: 500;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
 
     .notification-info-wrapper:hover .notification-text {
         display: block;
     }
 
-    .notification-date {
-        font-weight: 500;
-        color: #3f51b5;
-    }
+
 
     .notification-number {
         background: #aa0a0a;
@@ -92,26 +42,7 @@
         padding-left: 1.5rem;
     }
 
-    .skeleton {
-        opacity: .9;
-        animation: skeleton-loading 1s linear infinite alternate;
-    }
 
-    .skeleton-text {
-        width: 100%;
-        height: .5rem;
-        margin-bottom: .30rem;
-        border-radius: .125rem;
-    }
-
-    .skeleton-text:last-child {
-        margin-bottom: 0;
-        width: 80%;
-    }
-
-    .notification-title {
-        flex-grow: 1;
-    }
 
     @keyframes skeleton-loading {
         0% {
@@ -145,110 +76,48 @@
         <!--begin::Topbar-->
         <div class="topbar" style="background: #000">
 
-            <!--begin::Notifications-->
+
+            <!--begin::cart-->
             <div class="dropdown">
                 <!--begin::Toggle-->
                 <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary">
-                        <i class="flaticon2-bell-5"></i>
+                        <i style="color: #fff;" class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span class="pulse-ring"></span>
-                        <small class="notification-number app-notification-hidden">
+                        <small class="notification-number ">
                             2
                         </small>
                     </div>
                 </div>
                 <!--end::Toggle-->
-                <!--begin::Dropdown-->
-                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
-                    <!--begin::Content-->
-                    <div class="tab-content">
-                        <!--begin::Tabpane-->
-                        <div class="tab-pane active show py-8 px-2" id="topbar_notifications_notifications"
-                             role="tabpanel">
-                            <!--begin::Scroll-->
-                            <div class="scroll px-3" data-scroll="true" data-height="300"
-                                 data-app-notification-scroll-div
-                                 data-mobile-height="200"
-                            >
 
-                                <div data-app-notification-loader-div
-                                     class="notification-container app-notification-hidden">
-                                    <div class="notification-image-wrapper">
-                                        <img class="notification-owner-img skeleton" height="50" width="50"/>
-                                    </div>
-                                    <div class="notification-info-wrapper notification-title">
-                                        <div class="skeleton skeleton-text"></div>
-                                        <div class="skeleton skeleton-text"></div>
-                                        <div class="skeleton skeleton-text"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Scroll-->
-                        </div>
-                        <!--end::Tabpane-->
+            </div>
+            <!--end::cart-->
+
+
+            <!--begin::sign in-->
+            <div class="dropdown ml-3">
+                <!--begin::Toggle-->
+                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg ">
+                        <i style="color: #fff;" class="fa fa-sign-in" aria-hidden="true"></i>
+                        <span class="pulse-ring"></span>
+
                     </div>
-                    <!--end::Content-->
                 </div>
-                <!--end::Dropdown-->
+                <!--end::Toggle-->
+
             </div>
-            <!--end::Notifications-->
-
-
-
-            <!--begin::User-->
-            <div class="topbar-item" style="cursor: pointer">
-                <div class="text-right btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2"
-                     id="kt_quick_user_toggle">
-                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1"></span>
-
-                    <span  class="text-white font-size-base d-none d-md-inline mr-3">
+            <!--end::sign in-->
 
 
 
 
-                    </span>
-
-                    <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
-                        <span class="symbol-label font-size-h5 font-weight-bold" style="height: 35px; width: 35px">
-                            <img
-                                 th:src="@{/images/common/avatar.png}"
-                                 height="35" width="35" style="border-radius: .42rem; object-fit: contain"
-                            />
-                        </span>
-                    </span>
-                </div>
-            </div>
-            <!--end::User-->
         </div>
         <!--end::Topbar-->
     </div>
     <!--end::Container-->
 </div>
 
-<template data-app-notification>
-    <div data-app-notification-div
-         data-app-notification-id
-         data-app-notification-url
-         data-app-notification-is-target-blank
-         onclick="makeAppNotificationSeen(this);"
-         class="notification-container notification-read">
-        <div class="notification-image-wrapper">
-            <img data-app-notification-avatar-photo
-                 class="notification-owner-img"
-                 height="50"
-                 width="50"
-                 src=""
-                 alt=""
-            />
-        </div>
-        <div class="notification-info-wrapper">
-            <h6 class="mb-1 notification-text" data-app-notification-text>
-                <span class="notification-owner-name">XYZ</span>likes a photo you are tagged in.
-            </h6>
-            <span class="notification-date" data-app-notification-time>
-                27 june 2022, 06:00 PM
-            </span>
-        </div>
-    </div>
-</template>
+
 
