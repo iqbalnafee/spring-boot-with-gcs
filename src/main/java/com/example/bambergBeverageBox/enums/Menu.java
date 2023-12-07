@@ -6,11 +6,10 @@ import java.util.List;
 
 public enum Menu {
 
-    DASHBOARD,
     BEVERAGE(null),
     BEVERAGE_ADD(BEVERAGE),
     BOTTLE_ADD(BEVERAGE),
-    BEVERAGE_VIEW(BEVERAGE),
+    CRATE_ADD(BEVERAGE),
     PRODUCTS(null);
 
     private final Menu parentMenu;

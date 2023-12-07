@@ -14,5 +14,5 @@ public @interface TitleAndContent {
 
     String title() default "";
     String content();
-    Menu activeMenu() default Menu.DASHBOARD;
+    Menu activeMenu() default Menu.PRODUCTS;
 }
