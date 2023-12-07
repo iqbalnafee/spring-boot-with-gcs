@@ -1,9 +1,11 @@
 package com.example.bambergBeverageBox.bottle.model;
 
 import com.example.bambergBeverageBox.enums.ProductType;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class BottleResponse {
     private Long id;
     private Long beverageId;
@@ -13,7 +15,7 @@ public class BottleResponse {
     private Double volume;
     private boolean isAlcoholic = false;
     private Double volumePercent;
-    private Double price;
+    private String price;
     private String supplier;
-    private Integer inStock;
+    private String inStock;
 }

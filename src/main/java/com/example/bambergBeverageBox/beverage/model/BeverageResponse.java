@@ -1,4 +1,5 @@
 package com.example.bambergBeverageBox.beverage.model;
+import com.example.bambergBeverageBox.bottle.model.BottleResponse;
 import lombok.Data;
 
 
@@ -12,15 +13,7 @@ public class BeverageResponse {
 
     /*for bottles start*/
 
-    private String bottleNameEn;
-    private String bottleNameDe;
-    private String bottlePic;
-    private Double volume;
-    private boolean isAlcoholic;
-    private Double volumePercent;
-    private String price;
-    private String supplier;
-    private String inStock;
+    private BottleResponse bottleResponse;
 
     /*for bottles end*/
 

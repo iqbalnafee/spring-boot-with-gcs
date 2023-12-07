@@ -5,6 +5,7 @@ import com.example.bambergBeverageBox.beverage.model.BeverageAddRequest;
 import com.example.bambergBeverageBox.beverage.model.BeverageResponse;
 import com.example.bambergBeverageBox.beverage.model.BeverageSearchRequest;
 import com.example.bambergBeverageBox.bottle.model.Bottle;
+import com.example.bambergBeverageBox.bottle.model.BottleResponse;
 import com.example.bambergBeverageBox.bottle.service.BottleService;
 import com.example.bambergBeverageBox.enums.ProductType;
 import com.example.bambergBeverageBox.util.DropdownOptionResponse;
@@ -124,16 +125,8 @@ public class BeverageService {
 
             Bottle bottle = (Bottle) product;
             beverageResponse.setProductType(ProductType.BOTTLE.getProductType());
-
-            beverageResponse.setBottleNameEn(bottle.getBottleNameEn());
-            beverageResponse.setBottleNameDe(bottle.getBottleNameDe());
-            beverageResponse.setBottlePic(bottle.getBottlePic());
-            beverageResponse.setVolume(bottle.getVolume());
-            beverageResponse.setVolumePercent(bottle.getVolumePercent());
-            beverageResponse.setAlcoholic(bottle.getVolumePercent()>10);
-            beverageResponse.setPrice(bottle.getPrice()+" €");
-            beverageResponse.setSupplier(bottle.getSupplier());
-            beverageResponse.setInStock(bottle.getInStock()+" pieces left");
+            BottleResponse bottleResponse = bottleService.getBottleResponse(bottle);
+            beverageResponse.setBottleResponse(bottleResponse);
         }
     }
 }

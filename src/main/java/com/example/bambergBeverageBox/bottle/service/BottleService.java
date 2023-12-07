@@ -2,6 +2,7 @@ package com.example.bambergBeverageBox.bottle.service;
 
 import com.example.bambergBeverageBox.bottle.model.Bottle;
 import com.example.bambergBeverageBox.bottle.model.BottleAddRequest;
+import com.example.bambergBeverageBox.bottle.model.BottleResponse;
 import com.example.bambergBeverageBox.bottle.model.BottleSearchRequest;
 import com.example.bambergBeverageBox.util.SearchPageRestResponse;
 import lombok.RequiredArgsConstructor;
@@ -86,5 +87,19 @@ public class BottleService {
 
     public List<Bottle> findBottleByBeverageId(Long beverageId){
         return bottleRepository.findBottleByBeverageId(beverageId);
+    }
+
+    public BottleResponse getBottleResponse(Bottle bottle) {
+        return BottleResponse.builder()
+                .bottleNameEn(bottle.getBottleNameEn())
+                .bottleNameDe(bottle.getBottleNameDe())
+                .bottlePic(bottle.getBottlePic())
+                .volume(bottle.getVolume())
+                .volumePercent(bottle.getVolumePercent())
+                .isAlcoholic(bottle.getVolumePercent()>10)
+                .price(bottle.getPrice()+" €")
+                .supplier(bottle.getSupplier())
+                .inStock((bottle.getInStock()+" pieces left"))
+                .build();
     }
 }
