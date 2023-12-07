@@ -29,7 +29,7 @@ public class BottleController extends MVCController {
             Model model
     ) {
 
-        log.debug("Rendering Bottle Add Page");
+        //log.debug("Rendering Bottle Add Page");
         bottleModelService.addBottleModel(model);
         model.addAttribute("beverageList",
                 beverageModelService.getBeverageDropdownList());
