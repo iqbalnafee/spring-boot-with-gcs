@@ -23,10 +23,14 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint(customAuthenticationEntryPoint); // Set custom entry point
+                .authenticationEntryPoint(customAuthenticationEntryPoint)
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .and()
+                .headers()
+                .xssProtection(); // Set custom entry point
 
         return http.build();
     }
-
-
 }
