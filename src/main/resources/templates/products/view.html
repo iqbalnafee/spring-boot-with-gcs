@@ -16,7 +16,6 @@
 
         <th:block th:each="beverageResponse, stat: ${productResponse.beverageResponseList}"
                   th:object="${beverageResponse.bottleResponse}">
-
             <div class="col-md-3 col-sm-6 item">
                 <div class="card shadow p-3 mb-5 bg-white rounded card-div item-card ">
                     <img class="card-img-top card-image" th:src="*{bottlePic}" alt="image"
@@ -31,7 +30,6 @@
             </div>
 
         </th:block>
-
     </div>
 
 
