@@ -7,7 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon"
+          th:href="@{/metronic/assets/media/logos/fav_icon_2.png}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
 
@@ -17,6 +21,9 @@
 <div class="container" id="container">
     <div class="form-container sign-up">
         <form>
+            <a th:href="@{/}" class="brand-logo d-flex align-items-center">
+                <img alt="Logo" width="300" height="120" th:src="@{/metronic/assets/media/logos/b3_logo_1.png}">
+            </a>
             <h1>Create Account</h1>
             <input type="text" placeholder="Name">
             <input type="email" placeholder="Email">
@@ -26,7 +33,11 @@
     </div>
     <div class="form-container sign-in">
         <form>
+            <a th:href="@{/}" class="brand-logo d-flex align-items-center">
+                <img alt="Logo" width="300" height="120" th:src="@{/metronic/assets/media/logos/b3_logo_1.png}">
+            </a>
             <h1 style="margin-bottom:20px">Sign In</h1>
+
             <th:block
                     th:with="type=${'email'},
                                  name=${'email'},
@@ -62,7 +73,7 @@
             <div class="toggle-panel toggle-right">
                 <h1>New User?</h1>
                 <p class="bold">Create an account!</p>
-                <button  type="button" class="hidden" id="register">Sign Up</button>
+                <button type="button" class="hidden" id="register">Sign Up</button>
             </div>
         </div>
     </div>
