@@ -16,7 +16,7 @@
 .form__div {
     position: relative;
     height: 48px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
 }
 
 input.form-control:focus {

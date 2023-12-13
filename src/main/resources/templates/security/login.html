@@ -1,4 +1,7 @@
 <th:block th:replace="security/css/custom-css"></th:block>
+<link rel="stylesheet" type="text/css"
+      th:href="@{/css/common-layout/custom_input-style.css}"/>
+<th:block th:replace="css/custom_style.html"></th:block>
 <th:block th:replace="security/js/login-js"></th:block>
 <html lang="pt-BR">
 <head>
@@ -23,10 +26,30 @@
     </div>
     <div class="form-container sign-in">
         <form>
-            <h1>Sign In</h1>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <a href="#" class="bold" style="color: red">Forget your Password?</a>
+            <h1 style="margin-bottom:20px">Sign In</h1>
+            <th:block
+                    th:with="type=${'email'},
+                                 name=${'email'},
+                                 id=${'email'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='Email'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
+
+            <th:block
+                    th:with="type=${'password'},
+                                 name=${'password'},
+                                 id=${'password'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='Password'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
+
+            <a href="#" style="color: red; font-weight: bold;">Forget your Password?</a>
             <button type="button">Sign In</button>
         </form>
     </div>
