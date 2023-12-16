@@ -49,6 +49,9 @@ public class BeverageService {
 
         return beverage;
     }
+    public void deleteById(Long id) {
+        beverageRepository.deleteById(id);
+    }
 
     public Page<Beverage> getBeverageByNameEnAndNameDe(String nameEn, String nameDe,
                                                        Integer pageNo, Integer pageSize) {

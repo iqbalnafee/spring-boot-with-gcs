@@ -66,6 +66,10 @@ public class BeverageModelService {
 
 
     }
+    public boolean delete(Long id) {
+        beverageService.deleteById(id);
+        return true;
+    }
 
     public List<BeverageResponse> getAllBeverageResponseList() {
         return beverageService.getAllBeverageResponseList();

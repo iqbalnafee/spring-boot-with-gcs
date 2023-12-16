@@ -58,5 +58,13 @@ public class BeverageRestController {
                 .build();
         return beverageModelService.searchBeverage(request);
     }
+    @DeleteMapping("/{id}")
+    public RestResponse<String> delete(@PathVariable("id") Long id) {
+
+        boolean isBottleDeleted = beverageModelService.delete(id);
+        return isBottleDeleted ? RestResponse.ofSuccess("Data deleted successfully") :
+                RestResponse.ofError("Data deleted failed");
+    }
+
 
 }
