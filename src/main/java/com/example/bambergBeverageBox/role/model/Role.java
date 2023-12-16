@@ -19,7 +19,7 @@ public class Role  extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roles_sequence_generator")
-    @SequenceGenerator(name = "roles_sequence_generator", sequenceName = "roles_sequence", initialValue = 1)
+    @SequenceGenerator(name = "roles_sequence_generator", sequenceName = "roles_sequence", initialValue = 10)
     @Column(name = "id")
     private Long id;
 
