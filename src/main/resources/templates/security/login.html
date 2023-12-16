@@ -20,7 +20,11 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up">
-        <form>
+        <form
+                id="registerNewUser"
+                method="post"
+                th:action="@{/api/login/registerNewUser}"
+        >
             <!--<a th:href="@{/}" class="brand-logo d-flex align-items-center">
                 <img alt="Logo" width="300" height="120" th:src="@{/metronic/assets/media/logos/b3_logo_1.png}">
             </a>-->
@@ -61,8 +65,8 @@
 
             <th:block
                     th:with="type=${'email'},
-                                 name=${'signUpemail'},
-                                 id=${'signUpemail'},
+                                 name=${'signUpEmail'},
+                                 id=${'signUpEmail'},
                                  class=${'form__input2'},
                                  required=${true},
                                  label='Email'"
@@ -72,8 +76,8 @@
 
             <th:block
                     th:with="type=${'password'},
-                                 name=${'signUppassword'},
-                                 id=${'signUppassword'},
+                                 name=${'signUpPassword'},
+                                 id=${'signUpPassword'},
                                  class=${'form__input2'},
                                  required=${true},
                                  label='Password'"
@@ -91,7 +95,7 @@
                     th:include="components/inputs/text-input"
             >
             </th:block>
-            <button>Sign Up</button>
+            <button type="button" onclick="signUpClicked()">Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in">

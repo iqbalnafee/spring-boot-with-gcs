@@ -144,26 +144,7 @@ function deleteDialog(deleteMsg, message, successFunction, cancelFunction) {
     messageDialog(deleteMsg, message, 'error', true, deleteButtonText, cancelButtonText, successFunction, cancelFunction);
 }
 
-function messageDialog(title, message, type, showCancelButton, confirmButtonText, cancelButtonText, successFunction, cancelFunction) {
-    swal.fire({
-        title: title,
-        text: message,
-        icon: type,
-        showCancelButton: showCancelButton,
-        confirmButtonText: confirmButtonText,
-        cancelButtonText: cancelButtonText
-    }).then(function (result) {
-        if (result.value) {
-            if (successFunction && typeof successFunction == 'function') {
-                successFunction();
-            }
-        } else {
-            if (cancelFunction && typeof cancelFunction == 'function') {
-                cancelFunction();
-            }
-        }
-    });
-}
+
 
 class CustomToast {
     static DEFAULT_FADE_TIME_MS = 10000;

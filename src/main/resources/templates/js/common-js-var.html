@@ -73,6 +73,52 @@
             });
     }
 
+    function callAjaxWithAsyncFalse(url, param, method, successCallback, errorCallback) {
+        showLoader();
+        $.ajax({
+            url: url,
+            data: param,
+            method: method,
+            async: false,
+            success: function (data) {
+                if (typeof successCallback === 'function') {
+                    hideLoader();
+                    successCallback(data);
+                }
+
+            },
+            error: function (data) {
+                hideLoader();
+                if (typeof errorCallback === 'function') {
+                    errorCallback(data);
+                }
+            }
+        });
+        hideLoader();
+    }
+
+    function messageDialog(title, message, type, showCancelButton, confirmButtonText, cancelButtonText, successFunction,
+                           cancelFunction) {
+        swal.fire({
+            title: title,
+            text: message,
+            icon: type,
+            showCancelButton: showCancelButton,
+            confirmButtonText: confirmButtonText,
+            cancelButtonText: cancelButtonText
+        }).then(function (result) {
+            if (result.value) {
+                if (successFunction && typeof successFunction == 'function') {
+                    successFunction();
+                }
+            } else {
+                if (cancelFunction && typeof cancelFunction == 'function') {
+                    cancelFunction();
+                }
+            }
+        });
+    }
+
 
 
 </script>

@@ -1,4 +1,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script th:src="@{js/common-input-validation.js}"></script>
+<th:block th:replace="js/common-js-var" th:inline="javascript"></th:block>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script th:src="@{js/loader.js}" ></script>
+
 <script>
 
     $(document).ready(function() {
@@ -11,7 +16,48 @@
         $("#login").click(function(){
             $('#container').removeClass('active');
         });
+
+
+
     });
 
+    function signUpClicked(){
+
+        let form = $("#registerNewUser");
+        let ajaxData = new FormData(form[0]);
+
+        let formData = {
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+            userName: $("#userName").val(),
+            email: $("#signUpEmail").val(),
+            signUpPassword: $("#signUpPassword").val()
+        };
+        if(formData.signUpPassword.trim() !== $("#repeatPassword").val().trim()){
+            messageDialog('Error!', 'Password mismatched!','error', false, 'Ok' , 'Ok',null,null);
+        }
+        else{
+            showLoader();
+            const url = "/api/login/registerNewUser";
+            callAjaxWithAsyncFalse(url, formData, "POST",
+                (data) => {
+                    if (data.success) {
+                        messageDialog('Success!', 'User created successfully!','success', false, 'Ok' , 'Ok',() => {
+                            window.location.href = '/login';
+                        },null);
+
+                    } else {
+                        messageDialog('Error!', 'Can not create user!','error', false, 'Ok' , 'Ok',null,null);
+
+                    }
+                    hideLoader();
+                }, () => {
+                    messageDialog('Error!', 'Can not create user!','error', false, 'Ok' , 'Ok',null,null);
+                    hideLoader();
+                });
+        }
+
+
+    }
 
 </script>
