@@ -20,7 +20,7 @@ spring:
     basename: messages/title/messages,messages/errors/error_messages,messages/success/success_messages,messages/menu/menu_messages,messages/validation/validation_messages,messages/label/label_messages,messages/breadcrumb/breadcrumb_messages
 
   profiles:
-    active: moiz
+    active: nafees
 
 server:
   http2:

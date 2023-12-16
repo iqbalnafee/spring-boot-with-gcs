@@ -21,13 +21,76 @@
 <div class="container" id="container">
     <div class="form-container sign-up">
         <form>
-            <a th:href="@{/}" class="brand-logo d-flex align-items-center">
+            <!--<a th:href="@{/}" class="brand-logo d-flex align-items-center">
                 <img alt="Logo" width="300" height="120" th:src="@{/metronic/assets/media/logos/b3_logo_1.png}">
-            </a>
-            <h1>Create Account</h1>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
+            </a>-->
+
+
+            <th:block
+                    th:with="type=${'text'},
+                                 name=${'firstName'},
+                                 id=${'firstName'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='First Name'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
+
+            <th:block
+                    th:with="type=${'text'},
+                                 name=${'lastName'},
+                                 id=${'lastName'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='Last Name'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
+
+            <th:block
+                    th:with="type=${'text'},
+                                 name=${'userName'},
+                                 id=${'userName'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='User Name'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
+
+            <th:block
+                    th:with="type=${'email'},
+                                 name=${'signUpemail'},
+                                 id=${'signUpemail'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='Email'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
+
+            <th:block
+                    th:with="type=${'password'},
+                                 name=${'signUppassword'},
+                                 id=${'signUppassword'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='Password'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
+
+            <th:block
+                    th:with="type=${'password'},
+                                 name=${'repeatPassword'},
+                                 id=${'repeatPassword'},
+                                 class=${'form__input2'},
+                                 required=${true},
+                                 label='Confirm Password'"
+                    th:include="components/inputs/text-input"
+            >
+            </th:block>
             <button>Sign Up</button>
         </form>
     </div>
