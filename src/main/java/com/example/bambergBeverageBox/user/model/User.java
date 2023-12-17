@@ -27,8 +27,17 @@ public class User  extends AuditableEntity {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "firstName")
+    private String firstName;
+
+    @Column(name = "lastName")
+    private String lastName;
+
     @Column(name = "user_name",nullable = false, unique = true)
     private String username;
+
+    @Column(name = "email",nullable = false, unique = true)
+    private String email;
 
     @Column(name = "password")
     private String password;

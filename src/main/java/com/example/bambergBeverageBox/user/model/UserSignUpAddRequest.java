@@ -10,4 +10,5 @@ public class UserSignUpAddRequest {
     private String userName;
     private String email;
     private String signUpPassword;
+    private String birthDay;
 }

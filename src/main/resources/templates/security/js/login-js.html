@@ -23,16 +23,15 @@
 
     function signUpClicked(){
 
-        let form = $("#registerNewUser");
-        let ajaxData = new FormData(form[0]);
-
         let formData = {
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
             userName: $("#userName").val(),
             email: $("#signUpEmail").val(),
-            signUpPassword: $("#signUpPassword").val()
+            signUpPassword: $("#signUpPassword").val(),
+            birthDay: $("#birthDay").val()
         };
+
         if(formData.signUpPassword.trim() !== $("#repeatPassword").val().trim()){
             messageDialog('Error!', 'Password mismatched!','error', false, 'Ok' , 'Ok',null,null);
         }
