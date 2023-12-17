@@ -21,6 +21,34 @@
 
     });
 
+    function signInBtnClicked(){
+        let formData = {
+            userName: $("#signInUserName").val(),
+            signUpPassword: $("#password").val(),
+            firstName: '',
+            lastName: '',
+            email: $("#signInUserName").val(),
+            birthDay: ''
+        };
+
+        showLoader();
+        const url = "/api/login/signIn";
+        callAjaxWithAsyncFalse(url, formData, "GET",
+            (data) => {
+                if (data.success) {
+                    window.location.href = '/';
+
+                } else {
+                    messageDialog('Error!', data.message,'error', false, 'Ok' , 'Ok',null,null);
+
+                }
+                hideLoader();
+            }, () => {
+                messageDialog('Error!', data.message,'error', false, 'Ok' , 'Ok',null,null);
+                hideLoader();
+            });
+    }
+
     function signUpClicked(){
 
         let formData = {
@@ -41,17 +69,17 @@
             callAjaxWithAsyncFalse(url, formData, "POST",
                 (data) => {
                     if (data.success) {
-                        messageDialog('Success!', 'User created successfully!','success', false, 'Ok' , 'Ok',() => {
+                        messageDialog('Success!', data.message,'success', false, 'Ok' , 'Ok',() => {
                             window.location.href = '/login';
                         },null);
 
                     } else {
-                        messageDialog('Error!', 'Can not create user!','error', false, 'Ok' , 'Ok',null,null);
+                        messageDialog('Error!', data.message,'error', false, 'Ok' , 'Ok',null,null);
 
                     }
                     hideLoader();
                 }, () => {
-                    messageDialog('Error!', 'Can not create user!','error', false, 'Ok' , 'Ok',null,null);
+                    messageDialog('Error!', data.message,'error', false, 'Ok' , 'Ok',null,null);
                     hideLoader();
                 });
         }

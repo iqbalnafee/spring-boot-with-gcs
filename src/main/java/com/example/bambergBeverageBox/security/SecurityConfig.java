@@ -26,9 +26,13 @@ public class SecurityConfig {
         http
                 .csrf()
                 .disable()
-                .authorizeRequests()
-                .anyRequest().permitAll()
-                .and()
+                .authorizeHttpRequests((authorize) ->
+                        authorize.requestMatchers("/login").permitAll()
+                                .requestMatchers("/").permitAll()
+                                .requestMatchers("/beverage/**").hasRole("ADMIN")
+                                .requestMatchers("/bottle/**").hasRole("ADMIN")
+                                .requestMatchers("/crate/**").hasRole("ADMIN")
+                )
                 .exceptionHandling()
                 .authenticationEntryPoint(customAuthenticationEntryPoint)
                 .and()

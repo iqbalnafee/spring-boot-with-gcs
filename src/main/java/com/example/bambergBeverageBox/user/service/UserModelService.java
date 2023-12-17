@@ -14,4 +14,8 @@ public class UserModelService {
     public UserCreationResponse saveNewUser(UserSignUpAddRequest userSignUpAddRequest) {
         return userService.saveNewUser(userSignUpAddRequest);
     }
+
+    public UserCreationResponse signIn(UserSignUpAddRequest userSignUpAddRequest) {
+        return userService.signIn(userSignUpAddRequest);
+    }
 }

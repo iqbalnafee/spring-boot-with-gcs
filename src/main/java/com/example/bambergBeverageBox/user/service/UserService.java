@@ -7,8 +7,11 @@ import com.example.bambergBeverageBox.user.model.UserCreationResponse;
 import com.example.bambergBeverageBox.user.model.UserSignUpAddRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,16 +19,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class UserService {
+public class UserService  implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleService roleService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public UserCreationResponse saveNewUser(UserSignUpAddRequest userSignUpAddRequest) {
@@ -72,7 +76,7 @@ public class UserService {
         user.setLastName(userSignUpAddRequest.getLastName());
         user.setUsername(userSignUpAddRequest.getUserName());
         user.setEmail(userSignUpAddRequest.getEmail());
-        user.setPassword(passwordEncoder.encode(userSignUpAddRequest.getUserName()));
+        user.setPassword(passwordEncoder.encode(userSignUpAddRequest.getSignUpPassword()));
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(userSignUpAddRequest.getBirthDay(), formatter);
@@ -82,4 +86,39 @@ public class UserService {
         return user;
     }
 
+    public UserCreationResponse signIn(UserSignUpAddRequest userSignUpAddRequest) {
+        String userName = userSignUpAddRequest.getUserName();
+        if (userName != null && !userName.isBlank()) {
+            UserDetails userDetails =  loadUserByUsername(userName);
+            if (userDetails == null) return getUserCreationResponse("No user name exist!", false);
+            else {
+                String passWord = userSignUpAddRequest.getSignUpPassword();
+                if (!passwordEncoder.matches(passWord, userDetails.getPassword())) {
+                    return getUserCreationResponse("Wrong password!", false);
+                }
+            }
+        }
+        return getUserCreationResponse("User signed in Successfully", true);
+    }
+
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+        Collection<? extends GrantedAuthority> mapRoles = roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getRoleName()))
+                .collect(Collectors.toList());
+        return mapRoles;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        List<User> users = userRepository.findByUsername(username);
+        User user;
+        if (!users.isEmpty()) {
+            user = users.get(0);
+            return new org.springframework.security.core.userdetails.User(user.getUsername(),
+                    user.getPassword(),
+                    mapRolesToAuthorities(user.getRoles()));
+        }else{
+            return null;
+        }
+    }
 }

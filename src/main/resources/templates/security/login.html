@@ -111,12 +111,12 @@
             <h1 style="margin-bottom:20px">Sign In</h1>
 
             <th:block
-                    th:with="type=${'email'},
-                                 name=${'email'},
-                                 id=${'email'},
+                    th:with="type=${'text'},
+                                 name=${'signInuserName'},
+                                 id=${'signInUserName'},
                                  class=${'form__input2'},
                                  required=${true},
-                                 label='Email'"
+                                 label='User Name'"
                     th:include="components/inputs/text-input"
             >
             </th:block>
@@ -133,7 +133,7 @@
             </th:block>
 
             <a href="#" style="color: red; font-weight: bold;">Forget your Password?</a>
-            <button type="button">Sign In</button>
+            <button type="button" onclick="signInBtnClicked()">Sign In</button>
         </form>
     </div>
     <div class="toggle-container">

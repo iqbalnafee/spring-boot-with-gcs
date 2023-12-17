@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +31,24 @@ public class LoginRestController {
 
         } catch (Exception e) {
             log.error("", e);
-            return RestResponse.ofError("Can not create new user");
+            return RestResponse.ofError("Can not create new user!");
+        }
+    }
+
+    @GetMapping( "/signIn" )
+    public RestResponse<UserSignUpAddRequest> signIn(
+            @Valid UserSignUpAddRequest userSignUpAddRequest
+    ) {
+
+
+        try {
+            UserCreationResponse userCreationResponse = userModelService.signIn(userSignUpAddRequest);
+            if(userCreationResponse.isUserCreated()) return RestResponse.ofSuccess(userCreationResponse.getMsg());
+            else return RestResponse.ofError(userCreationResponse.getMsg());
+
+        } catch (Exception e) {
+            log.error("", e);
+            return RestResponse.ofError("User sign in failed!");
         }
     }
 }

@@ -6,7 +6,7 @@
         <!--begin::Menu Nav-->
         <ul class="menu-nav">
 
-            <th:block th:replace="components/menu/beverage-menu"></th:block>
+            <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')" th:replace="components/menu/beverage-menu"></th:block>
             <th:block th:replace="components/menu/products-menu"></th:block>
 
         </ul>
