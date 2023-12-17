@@ -35,6 +35,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation group: 'com.github.darrachequesne', name: 'spring-data-jpa-datatables', version: '6.0.1'
 	annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.5.7.Final'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.1.2.RELEASE'
 
 
 }

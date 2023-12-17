@@ -21,23 +21,35 @@ public class SecurityConfig {
     }
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
+    private final String[] permitAllURL = {
+            "/login",
+            "/api/login/**",
+            "/css/**",
+            "/images/**",
+            "/js/**",
+            "/metronic/**"
+    };
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf()
                 .disable()
+
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/login").permitAll()
+                        authorize
                                 .requestMatchers("/").permitAll()
+                                .requestMatchers(permitAllURL).permitAll()
                                 .requestMatchers("/beverage/**").hasRole("ADMIN")
                                 .requestMatchers("/bottle/**").hasRole("ADMIN")
                                 .requestMatchers("/crate/**").hasRole("ADMIN")
                 )
+
                 .exceptionHandling()
                 .authenticationEntryPoint(customAuthenticationEntryPoint)
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/", true)
                 .and()
                 .headers()
                 .xssProtection(); // Set custom entry point
