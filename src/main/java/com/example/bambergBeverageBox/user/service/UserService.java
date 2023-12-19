@@ -89,13 +89,15 @@ public class UserService  implements UserDetailsService {
     public UserCreationResponse signIn(UserSignUpAddRequest userSignUpAddRequest) {
         String userName = userSignUpAddRequest.getUserName();
         if (userName != null && !userName.isBlank()) {
-            UserDetails userDetails =  loadUserByUsername(userName);
-            if (userDetails == null) return getUserCreationResponse("No user name exist!", false);
+            List<User> users = userRepository.findByUsername(userName);
+            if (userName.isEmpty()) return getUserCreationResponse("No user name exist!", false);
             else {
                 String passWord = userSignUpAddRequest.getSignUpPassword();
-                if (!passwordEncoder.matches(passWord, userDetails.getPassword())) {
+                User user = users.get(0);
+                if (!passwordEncoder.matches(passWord, user.getPassword())) {
                     return getUserCreationResponse("Wrong password!", false);
                 }
+
             }
         }
         return getUserCreationResponse("User signed in Successfully", true);
@@ -114,7 +116,8 @@ public class UserService  implements UserDetailsService {
         User user;
         if (!users.isEmpty()) {
             user = users.get(0);
-            return new org.springframework.security.core.userdetails.User(user.getUsername(),
+            return new org.springframework.security.core.userdetails.User(
+                    user.getUsername(),
                     user.getPassword(),
                     mapRolesToAuthorities(user.getRoles()));
         }else{

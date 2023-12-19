@@ -1,7 +1,6 @@
 <li
         th:classappend="${ menuPath != null and menuPath.contains(Menu.BEVERAGE_ADD)? 'menu-item-here menu-item-open':'' }"
         class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover"
-        sec:authorize="hasAuthority( 'ROLE_ADMIN')"
 >
 
     <a th:href="@{/beverage/search}" class="menu-link">

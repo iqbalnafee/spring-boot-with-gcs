@@ -104,15 +104,23 @@
         </form>
     </div>
     <div class="form-container sign-in">
-        <form>
+        <form
+                id="signInUser"
+                method="POST"
+                th:action="@{/signIn}"
+        >
             <a th:href="@{/}" class="brand-logo d-flex align-items-center">
                 <img alt="Logo" width="300" height="120" th:src="@{/metronic/assets/media/logos/b3_logo_1.png}">
             </a>
             <h1 style="margin-bottom:20px">Sign In</h1>
+            <input type="hidden" value="" name="firstName">
+            <input type="hidden" value="" name="lastName">
+            <input type="hidden" value="" name="email">
+            <input type="hidden" value="" name="birthDay">
 
             <th:block
                     th:with="type=${'text'},
-                                 name=${'signInuserName'},
+                                 name=${'userName'},
                                  id=${'signInUserName'},
                                  class=${'form__input2'},
                                  required=${true},
@@ -123,7 +131,7 @@
 
             <th:block
                     th:with="type=${'password'},
-                                 name=${'password'},
+                                 name=${'signUpPassword'},
                                  id=${'password'},
                                  class=${'form__input2'},
                                  required=${true},
@@ -133,7 +141,8 @@
             </th:block>
 
             <a href="#" style="color: red; font-weight: bold;">Forget your Password?</a>
-            <button type="button" onclick="signInBtnClicked()">Sign In</button>
+<!--            <button type="button" onclick="signInBtnClicked()">Sign In</button>-->
+            <button type="submit">Register</button>
         </form>
     </div>
     <div class="toggle-container">
