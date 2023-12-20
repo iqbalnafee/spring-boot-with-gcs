@@ -54,6 +54,8 @@ public class SecurityConfig {
     private final String[] permitAllURL = {
             "/",
             "/login",
+            "/cart/**",
+            "/api/cart/**",
             "/signIn",
             "/api/login/**",
             "/css/**",
@@ -120,12 +122,7 @@ public class SecurityConfig {
 
     }*/
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("admin")).roles("ROLE_ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(admin);
-    }
+
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http)

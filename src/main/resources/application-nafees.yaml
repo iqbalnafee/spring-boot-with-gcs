@@ -31,6 +31,12 @@ spring:
     url: jdbc:mysql://localhost:8088/bamberg_beverage_box
     username: root
 
+  session:
+    jdbc:
+      flush-mode: on_save
+      initialize-schema: always
+      table-name: SPRING_SESSION
+
 server:
   servlet:
     session:

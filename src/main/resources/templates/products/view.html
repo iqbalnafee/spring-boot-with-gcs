@@ -1,4 +1,5 @@
 <th:block th:replace="products/css/custom-css"></th:block>
+<th:block th:replace="products/js/product-view-js"></th:block>
 <div id="kt_page_sticky_card" class="card card-custom card-sticky">
     <div class="card-header align-items-center">
         <div class="card-title">
@@ -14,9 +15,16 @@
 
     <div class="row" th:object="${productResponse}">
 
-        <th:block th:each="beverageResponse, stat: ${productResponse.beverageResponseList}"
-                  th:object="${beverageResponse.bottleResponse}">
-            <div class="col-md-3 col-sm-6 item">
+
+        <th:block
+                th:each="beverageResponse, iter: ${productResponse.beverageResponseList}"
+                th:object="${beverageResponse.bottleResponse}"
+                th:with="rowDataJsonString=${T(com.example.bambergBeverageBox.util.StringUtil).toJsonString(beverageResponse.bottleResponse)}">
+
+            <!--<th:block th:each="beverageResponse, stat: ${productResponse.beverageResponseList}"
+                  th:object="${beverageResponse.bottleResponse}">-->
+
+            <div  class="col-md-3 col-sm-6 item jsonData" >
                 <div class="card shadow p-3 mb-5 bg-white rounded card-div item-card ">
                     <img class="card-img-top card-image" th:src="*{bottlePic}" alt="image"
                          style="width:100%">
@@ -26,7 +34,8 @@
                         <h5 class="center-item mt-1" style="color: red;font-size: medium;" th:text="*{inStock}">Stock</h5>
 
 
-                        <a href="#" class="btn green-transparent-btn center-item add-cart-btn">Add to cart</a><!--thymeleaf code-->
+                        <a href="#" th:data-row-data="${rowDataJsonString}" onclick="addToCart(this)"
+                           class="btn green-transparent-btn center-item add-cart-btn">Add to cart</a>
                     </div>
                 </div>
             </div>

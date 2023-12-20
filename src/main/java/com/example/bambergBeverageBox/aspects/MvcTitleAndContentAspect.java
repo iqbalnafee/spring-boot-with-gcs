@@ -10,9 +10,6 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -42,9 +39,9 @@ public class MvcTitleAndContentAspect {
         mvcUtil.addTitleAndContent(model, title, content, activeMenu);
         mvcUtil.addMenuPath(model, activeMenu.findMenuPath());
 
-        //Authentication authentication = new UsernamePasswordAuthenticationToken(principal.getUserName(), null, authorities);
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             String username = authentication.getName(); // Get the username
             // You can retrieve other details from the authenticated principal if needed
@@ -56,6 +53,6 @@ public class MvcTitleAndContentAspect {
             boolean isAdmin = authentication.getAuthorities().stream()
                     .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
             model.addAttribute("isAdmin", isAdmin);
-        }
+        }*/
     }
 }

@@ -1,0 +1,37 @@
+<script>
+    $(document).ready(function() {
+        $("#cart").click(function(){
+            window.location.href = '/cart/view';
+        });
+
+    });
+
+
+    function addToCart(selectedElement){
+        let addToCart = document.querySelector('#itemAddedToCart');
+        addToCart.innerText = +addToCart.innerText+1;
+        updateSpringBootSession(selectedElement);
+    }
+
+    function updateSpringBootSession(selectedElement){
+        let data = selectedElement.dataset.rowData;
+        data = JSON.parse(data.replace(/&quot;/g, '"'));
+
+
+        showLoader();
+        const url = "/api/cart/setCartSessionData";
+        callAjaxWithAsyncFalse(url, data, "GET",
+            (data) => {
+                if (data.success) {
+
+                } else {
+                    messageDialog('Error!', data.message,'error', false, 'Ok' , 'Ok',null,null);
+
+                }
+                hideLoader();
+            }, () => {
+                messageDialog('Error!', data.message,'error', false, 'Ok' , 'Ok',null,null);
+                hideLoader();
+            });
+    }
+</script>

@@ -4,6 +4,7 @@ import com.example.bambergBeverageBox.bottle.model.Bottle;
 import com.example.bambergBeverageBox.bottle.model.BottleAddRequest;
 import com.example.bambergBeverageBox.bottle.model.BottleResponse;
 import com.example.bambergBeverageBox.bottle.model.BottleSearchRequest;
+import com.example.bambergBeverageBox.enums.ProductType;
 import com.example.bambergBeverageBox.util.SearchPageRestResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,7 +91,9 @@ public class BottleService {
     }
 
     public BottleResponse getBottleResponse(Bottle bottle) {
+
         return BottleResponse.builder()
+                .id(bottle.getId())
                 .bottleNameEn(bottle.getBottleNameEn())
                 .bottleNameDe(bottle.getBottleNameDe())
                 .bottlePic(bottle.getBottlePic())
@@ -100,6 +103,7 @@ public class BottleService {
                 .price(bottle.getPrice()+" €")
                 .supplier(bottle.getSupplier())
                 .inStock((bottle.getInStock()+" pieces left"))
+                .productType(ProductType.BOTTLE.getProductType())
                 .build();
     }
 }

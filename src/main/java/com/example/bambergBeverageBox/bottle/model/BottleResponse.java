@@ -18,4 +18,5 @@ public class BottleResponse {
     private String price;
     private String supplier;
     private String inStock;
+    Integer productType;
 }
