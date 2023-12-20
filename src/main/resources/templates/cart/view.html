@@ -1,7 +1,4 @@
-<!--
-<th:block th:replace="products/css/custom-css"></th:block>
--->
-
+<th:block th:replace="cart/css/cart-custom-css"></th:block>
 <div id="kt_page_sticky_card" class="card card-custom card-sticky">
     <div class="card-header align-items-center">
         <div class="card-title">
@@ -12,32 +9,94 @@
     </div>
     <div class="card-body">
 
+        <div class="row">
+            <div class="col-70">
+                <div class="container">
+                    <form action="/action_page.php">
 
+                        <div class="row">
+                            <div class="col-50">
+                                <h3>Billing Address</h3>
+                                <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                                <input type="text" id="fname" name="firstname" placeholder="Full Name">
+                                <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                <input type="text" id="email" name="email" placeholder="your-email@example.com">
+                                <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                                <input type="text" id="adr" name="address" placeholder="An Der Weberei 5">
+                                <label for="city"><i class="fa fa-institution"></i> City</label>
+                                <input type="text" id="city" name="city" placeholder="Bamberg">
 
+                                <div class="row">
+                                    <div class="col-50">
+                                        <label for="state">State</label>
+                                        <input type="text" id="state" name="state" placeholder="Bavaria">
+                                    </div>
+                                    <div class="col-50">
+                                        <label for="zip">Zip</label>
+                                        <input type="text" id="zip" name="zip" placeholder="96049">
+                                    </div>
+                                </div>
+                            </div>
 
-        <!--<div class="row" th:object="${productResponse}">
+                            <div class="col-50">
+                                <h3>Payment</h3>
+                                <label for="fname">Accepted Cards</label>
+                                <div class="icon-container">
+                                    <i class="fa-brands fa-cc-visa" style="color: navy"></i>
+                                    <i class="fa-brands fa-cc-amex" style="color:blue;"></i>
+                                    <i class="fa-brands fa-cc-mastercard" style="color:red;"></i>
+                                    <i class="fa-brands fa-cc-discover" style="color:orange;"></i>
+                                </div>
+                                <label for="cname">Name on Card</label>
+                                <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                                <label for="ccnum">Credit card number</label>
+                                <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                <label for="expmonth">Exp Month</label>
+                                <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                                <div class="row">
+                                    <div class="col-50">
+                                        <label for="expyear">Exp Year</label>
+                                        <input type="text" id="expyear" name="expyear" placeholder="2018">
+                                    </div>
+                                    <div class="col-50">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" name="cvv" placeholder="352">
+                                    </div>
+                                </div>
+                            </div>
 
-            <th:block th:each="beverageResponse, stat: ${productResponse.beverageResponseList}"
-                      th:object="${beverageResponse.bottleResponse}">
-                <div class="col-md-3 col-sm-6 item">
-                    <div class="card shadow p-3 mb-5 bg-white rounded card-div item-card ">
-                        <img class="card-img-top card-image" th:src="*{bottlePic}" alt="image"
-                             style="width:100%">
-                        <div class="card-body">
-                            <h6 class="center-item" th:text="*{price}">Price</h6>
-                            <h5 class="center-item" th:text="*{bottleNameEn}">Name</h5>
-                            <h5 class="center-item mt-1" style="color: red;font-size: medium;" th:text="*{inStock}">Stock</h5>
-
-
-                            <a href="#" onclick="addToCart(this)" class="btn green-transparent-btn center-item add-cart-btn">Add to cart</a>&lt;!&ndash;thymeleaf code&ndash;&gt;
                         </div>
-                    </div>
+                        <label>
+                            <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                        </label>
+                        <input type="submit" value="Continue to checkout" class="btn">
+                    </form>
                 </div>
+            </div>
+            <div class="col-30">
+                <div class="container">
+                    <h4 class="mb-6">Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b th:text="${totalItemAddedToCart}">4</b></span></h4>
+                   <!-- <a href="#" th:text="${element.value.addedItemName}"></a>-->
+                    <th:block th:each="element : ${itemAddedToCart}">
+                        <p>
+                            <a href="#" style="font-weight: bold;" th:text="${element.value.addedItemName}"></a>
+                            <img th:src="${element.value.addedItemPic}" alt="image" height="40px" width="40px">
+                            <span class="price"
+                                  th:text="${element.value.addedItemPrice + '€  * '
+                                   + element.value.addedItemQuantity
+                                   +' = '
+                                   + element.value.totalPricePerAddedItem+ '€'}">
 
-            </th:block>
-        </div>-->
+                            </span>
+                        </p>
+                    </th:block>
 
 
+                    <hr>
+                    <p>Total <span class="price" style="color:black"><b th:text="${totalPriceOfAddedItems + '€'}"></b></span></p>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
