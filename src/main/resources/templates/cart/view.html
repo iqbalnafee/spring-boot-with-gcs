@@ -1,4 +1,5 @@
 <th:block th:replace="cart/css/cart-custom-css"></th:block>
+<th:block th:replace="cart/js/cart-js"></th:block>
 <div id="kt_page_sticky_card" class="card card-custom card-sticky">
     <div class="card-header align-items-center">
         <div class="card-title">
@@ -69,7 +70,7 @@
                         <label>
                             <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                         </label>
-                        <input type="submit" value="Continue to checkout" class="btn">
+                        <input type="button" onclick="submitOrder()" value="Submit Order" class="custom-order-btn">
                     </form>
                 </div>
             </div>

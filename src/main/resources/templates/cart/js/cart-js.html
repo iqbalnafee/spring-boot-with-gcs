@@ -1,0 +1,24 @@
+<script>
+
+    function submitOrder() {
+
+
+        let isAuthenticated= [[${isAuthenticated}]];
+        let totalItemAddedToCart= [[${totalItemAddedToCart}]];
+
+        if (isAuthenticated !== true) {
+            messageDialog('Sorry!', 'You have to log in first to make an order!', 'error', false, 'Ok', 'Ok', () => {
+                window.location.href = '/login';
+            }, null);
+        } else if (+totalItemAddedToCart < 1) {
+            messageDialog('Sorry!', 'To make an order, please add item in the cart!', 'error', false, 'Ok', 'Ok', () => {
+                window.location.href = '/';
+            }, null);
+        } else {
+            messageDialog('Success!', 'Orders placed successfully!', 'success', false, 'Ok', 'Ok', () => {
+                window.location.href = '/orders/view';
+            }, null);
+        }
+    }
+
+</script>

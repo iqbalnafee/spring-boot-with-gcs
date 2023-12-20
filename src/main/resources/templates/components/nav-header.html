@@ -92,7 +92,7 @@
             <!--end::cart-->
 
             <!--begin:user-->
-            <div class="dropdown ml-3">
+            <div th:if="${isAuthenticated == true}" class="dropdown ml-3">
                 <!--begin::Toggle-->
                 <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg ">
@@ -122,7 +122,8 @@
                 <div class="topbar-item">
                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg ">
                         <a th:href="@{/login}" class=" btn btn-icon btn-clean btn-dropdown btn-lg">
-                            <i style="color: #fff;" class="fa fa-sign-in" aria-hidden="true"></i>
+                            <i  style="color: #fff;" class="fa fa-user-plus" aria-hidden="true"></i>
+                            <!--<i style="color: #fff;" class="fa fa-sign-in" aria-hidden="true"></i>-->
                         </a>
 
                     </div>
