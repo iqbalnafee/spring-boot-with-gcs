@@ -15,7 +15,7 @@ public class BottleResponse {
     private Double volume;
     private boolean isAlcoholic = false;
     private Double volumePercent;
-    private String price;
+    private Double price;
     private String supplier;
     private String inStock;
     Integer productType;

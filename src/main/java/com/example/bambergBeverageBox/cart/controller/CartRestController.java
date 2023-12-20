@@ -1,9 +1,11 @@
 package com.example.bambergBeverageBox.cart.controller;
 
+import com.example.bambergBeverageBox.beverage.model.BeverageSessionResponse;
 import com.example.bambergBeverageBox.bottle.model.BottleResponse;
 import com.example.bambergBeverageBox.rest.RestResponse;
 import com.example.bambergBeverageBox.util.StringUtil;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +23,14 @@ import java.util.List;
 public class CartRestController {
 
 
-
     @GetMapping(value = "/setCartSessionData")
     public RestResponse<?> setCartSessionData(
-            BottleResponse bottleResponse, final HttpSession session
+            @Valid BeverageSessionResponse beverageSessionResponse, final HttpSession session
     ) {
         try {
-
-            List<String> cartItems = (List<String>) session.getAttribute(StringUtil.SESSION_ATTRIBUTE_NAME_CART);
+            List<BeverageSessionResponse> cartItems = (List<BeverageSessionResponse>) session.getAttribute(StringUtil.SESSION_ATTRIBUTE_NAME_CART);
             if (cartItems == null) cartItems = new ArrayList<>();
-            cartItems.add("a");
+            cartItems.add(beverageSessionResponse);
             session.setAttribute(StringUtil.SESSION_ATTRIBUTE_NAME_CART, cartItems);
 
             return RestResponse.ofSuccess("set done session data!");

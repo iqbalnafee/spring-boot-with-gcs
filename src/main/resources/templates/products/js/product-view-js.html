@@ -1,10 +1,4 @@
 <script>
-    $(document).ready(function() {
-        $("#cart").click(function(){
-            window.location.href = '/cart/view';
-        });
-
-    });
 
 
     function addToCart(selectedElement){
@@ -17,10 +11,38 @@
         let data = selectedElement.dataset.rowData;
         data = JSON.parse(data.replace(/&quot;/g, '"'));
 
+        console.log(data);
+
+        let addedItemName = '';
+        let addedItemPic = '';
+        let addedItemId = -1;
+        let addedItemPrice = -1.0;
+        if(+data.productType === 1) {
+            addedItemId = data.bottleResponse.id;
+            addedItemName = data.bottleResponse.bottleNameEn;
+            addedItemPic = data.bottleResponse.bottlePic;
+            addedItemPrice = data.bottleResponse.price;
+        }
+        else if(+data.productType === 2) {
+            addedItemId = data.crateResponse.id;
+            addedItemName = data.crateResponse.crateNameEn;
+            addedItemPic = data.crateResponse.cratePic;
+            addedItemPrice = data.crateResponse.price;
+        }
+
+        let beverageSessionResponse = {
+            beverageId: data.beverageId,
+            productType: data.productType,
+            addedItemId: addedItemId,
+            addedItemName: addedItemName,
+            addedItemPic: addedItemPic,
+            addedItemPrice: addedItemPrice,
+            addedItemQuantity: 1
+        };
 
         showLoader();
         const url = "/api/cart/setCartSessionData";
-        callAjaxWithAsyncFalse(url, data, "GET",
+        callAjaxWithAsyncFalse(url, beverageSessionResponse, "GET",
             (data) => {
                 if (data.success) {
 

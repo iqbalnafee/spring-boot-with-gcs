@@ -37,8 +37,10 @@ spring:
       initialize-schema: always
       table-name: SPRING_SESSION
 
+
 server:
   servlet:
     session:
+      timeout: 900
       tracking-modes: cookie
 

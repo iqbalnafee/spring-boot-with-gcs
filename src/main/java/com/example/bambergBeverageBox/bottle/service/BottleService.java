@@ -100,7 +100,7 @@ public class BottleService {
                 .volume(bottle.getVolume())
                 .volumePercent(bottle.getVolumePercent())
                 .isAlcoholic(bottle.getVolumePercent()>10)
-                .price(bottle.getPrice()+" €")
+                .price(bottle.getPrice())
                 .supplier(bottle.getSupplier())
                 .inStock((bottle.getInStock()+" pieces left"))
                 .productType(ProductType.BOTTLE.getProductType())

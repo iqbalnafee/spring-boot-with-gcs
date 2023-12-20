@@ -84,7 +84,7 @@
                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary">
                         <i style="color: #fff;" class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span class="pulse-ring"></span>
-                        <small id="itemAddedToCart" class="notification-number"  th:text="${itemAddedToCart}">
+                        <small id="itemAddedToCart" class="notification-number"  th:text="${totalItemAddedToCart}">
                             0
                         </small>
                     </div>
@@ -134,6 +134,16 @@
     </div>
     <!--end::Container-->
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("#cart").click(function(){
+            window.location.href = '/cart/view';
+        });
+
+    });
+
+</script>
 
 
 
