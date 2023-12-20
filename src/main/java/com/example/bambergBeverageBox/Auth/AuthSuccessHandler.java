@@ -29,8 +29,8 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
 
 
         jwtService.createTokenAndSetInCookie(request, response, userDetails);
-
         super.onAuthenticationSuccess(request, response, authentication);
+        response.sendRedirect("/");
     }
 
 

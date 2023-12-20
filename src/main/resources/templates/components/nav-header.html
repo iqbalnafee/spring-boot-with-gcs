@@ -12,11 +12,9 @@
     }
 
 
-
     .notification-info-wrapper:hover .notification-text {
         display: block;
     }
-
 
 
     .notification-number {
@@ -43,7 +41,6 @@
     }
 
 
-
     @keyframes skeleton-loading {
         0% {
             background-color: hsl(200, 25%, 75%);
@@ -54,7 +51,7 @@
     }
 </style>
 
-<div id="kt_header" class="header header-fixed">
+<div  id="kt_header" class="header header-fixed" >
     <!--begin::Container-->
     <div class="container-fluid d-flex align-items-stretch justify-content-between" style="background: #000">
 
@@ -84,7 +81,7 @@
                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary">
                         <i style="color: #fff;" class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span class="pulse-ring"></span>
-                        <small id="itemAddedToCart" class="notification-number"  th:text="${totalItemAddedToCart}">
+                        <small id="itemAddedToCart" class="notification-number" th:text="${totalItemAddedToCart}">
                             0
                         </small>
                     </div>
@@ -110,10 +107,19 @@
             <!--end:user-->
 
 
-            <!--begin::sign in-->
-            <div class="dropdown ml-3">
+            <div th:if="${isAuthenticated == true}" class="dropdown ml-3">
                 <!--begin::Toggle-->
-                <div class="topbar-item" >
+                <div class="topbar-item" style="color: #fff;font-weight: bold">
+                    Welcome, <span  th:text="${username}"></span>
+                </div>
+                <!--end::Toggle-->
+
+            </div>
+
+            <!--begin::sign in-->
+            <div th:if="${isAuthenticated == null || isAuthenticated == false}" class="dropdown ml-3">
+                <!--begin::Toggle-->
+                <div class="topbar-item">
                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg ">
                         <a th:href="@{/login}" class=" btn btn-icon btn-clean btn-dropdown btn-lg">
                             <i style="color: #fff;" class="fa fa-sign-in" aria-hidden="true"></i>
@@ -126,7 +132,23 @@
             </div>
             <!--end::sign in-->
 
+            <!--begin::sign out-->
 
+            <div th:if="${isAuthenticated != null && isAuthenticated == true}" class="dropdown ml-3">
+                <!--begin::Toggle-->
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg ">
+                        <a th:href="@{/logout}" class=" btn btn-icon btn-clean btn-dropdown btn-lg">
+                            <i style="color: #fff;" class="fa fa-sign-in" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <!--end::Toggle-->
+
+            </div>
+
+            <!--end::sign out-->
 
 
         </div>
@@ -136,8 +158,8 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $("#cart").click(function(){
+    $(document).ready(function () {
+        $("#cart").click(function () {
             window.location.href = '/cart/view';
         });
 

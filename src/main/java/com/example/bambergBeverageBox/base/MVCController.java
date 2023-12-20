@@ -3,6 +3,7 @@ package com.example.bambergBeverageBox.base;
 import com.example.bambergBeverageBox.beverage.model.BeverageSessionResponse;
 import com.example.bambergBeverageBox.util.StringUtil;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 
 import java.util.HashMap;
@@ -13,13 +14,22 @@ import java.util.concurrent.atomic.AtomicReference;
 public class MVCController {
     protected String viewRoot = "layout";
 
-    public void setTotalItemCountToCartFromSession(Model model, final HttpSession session) {
+    public void setTotalItemCountToCartFromSession(Model model, final HttpSession session, Authentication authentication) {
         List<BeverageSessionResponse> cartItems = (List<BeverageSessionResponse>) session.getAttribute(
                 StringUtil.SESSION_ATTRIBUTE_NAME_CART);
 
         if (cartItems != null && !cartItems.isEmpty())
             model.addAttribute("totalItemAddedToCart", cartItems.size());
         else model.addAttribute("totalItemAddedToCart", 0);
+
+        model.addAttribute("isAuthenticated", false);
+        if (authentication != null) {
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            model.addAttribute("isAuthenticated", true);
+        }
+
+
     }
 
     public void getItemFromSessionCart(Model model, final HttpSession session) {

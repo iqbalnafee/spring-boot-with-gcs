@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +25,12 @@ public class ProductController extends MVCController {
     @GetMapping
     @TitleAndContent(title = "Products", content = "products/view", activeMenu = Menu.PRODUCTS)
     public String view(
-            Model model, final HttpSession session
+            Model model, final HttpSession session, Authentication authentication
     ) {
 
         log.debug("Rendering Product Page");
         productsModelService.getAllProducts(model);
-        setTotalItemCountToCartFromSession(model,session);
+        setTotalItemCountToCartFromSession(model,session, authentication);
         return viewRoot;
     }
 

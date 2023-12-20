@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor( onConstructor_ = { @Autowired} )
@@ -29,7 +30,13 @@ public class LoginController {
         return "security/login";
     }
 
-    /*@PostMapping("/signIn")
+    @RequestMapping("/login-error.html")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "security/login";
+    }
+
+    @PostMapping("/signIn")
     public void signIn(
             @Valid UserSignUpAddRequest userSignUpAddRequest
     ) {
@@ -42,10 +49,9 @@ public class LoginController {
                         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userSignUpAddRequest.getUserName(),
                                 userSignUpAddRequest.getSignUpPassword()));
                 //SecurityContextHolder.getContext().setAuthentication(authentication);
-                System.out.println(authentication.toString());
             }
 
         } catch (Exception e) {
         }
-    }*/
+    }
 }

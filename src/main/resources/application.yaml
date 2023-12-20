@@ -3,6 +3,16 @@ msg:
   title: Bamberg Beverage Box
 
 spring:
+  thymeleaf:
+    mode: HTML
+    cache: false # Disable caching for development
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    template-resolver-order: 1 # Set the order for template resolving
+    dialects:
+      - org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect # Use the correct version
   servlet:
     multipart:
       file-size-threshold: 2KB

@@ -3,32 +3,20 @@ package com.example.bambergBeverageBox.security;
 import com.example.bambergBeverageBox.Auth.AuthSuccessHandler;
 import com.example.bambergBeverageBox.Auth.AuthenticationFailureHandler;
 import com.example.bambergBeverageBox.jwt.service.JwtAuthFilter;
-import com.example.bambergBeverageBox.user.service.UserRepository;
 import com.example.bambergBeverageBox.user.service.UserService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
@@ -49,11 +37,19 @@ public class SecurityConfig {
     @Autowired
     JwtAuthFilter jwtAuthFilter;
 
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
 
 
     private final String[] permitAllURL = {
             "/",
             "/login",
+            "/logout",
             "/cart/**",
             "/api/cart/**",
             "/signIn",
@@ -66,6 +62,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+
+
         http.csrf().disable()
                 .authorizeRequests()
                 .requestMatchers(permitAllURL).permitAll()
@@ -73,13 +71,12 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/signIn")
+                .failureUrl("/login-error.html")
+                .usernameParameter("signInUserName")
+                .passwordParameter("signUpPassword")
                 .successHandler(authSuccessHandler)
                 .defaultSuccessUrl("/", true)
-                .permitAll()
-                .and()
-                // other configurations...
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .permitAll();
 
 
 
