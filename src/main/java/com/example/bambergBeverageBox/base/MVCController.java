@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class MVCController {
     protected String viewRoot = "layout";
@@ -45,20 +44,8 @@ public class MVCController {
             for (BeverageSessionResponse item : cartItems) {
                 Double price = item.getAddedItemPrice();
                 totalPriceOfAddedItems += price;
-                if (map.containsKey(item.getAddedItemId())) {
-                    BeverageSessionResponse beverageSessionResponse = map.get(item.getAddedItemId());
-                    beverageSessionResponse.setAddedItemQuantity(beverageSessionResponse.getAddedItemQuantity() + 1);
-                    beverageSessionResponse.setTotalPricePerAddedItem(
-                            Double.valueOf(StringUtil.df.format(price * beverageSessionResponse.getAddedItemQuantity())));
-                    map.put(item.getAddedItemId(), beverageSessionResponse);
-                } else {
-                    item.setAddedItemQuantity(1);
-                    item.setTotalPricePerAddedItem(price);
-                    map.put(item.getAddedItemId(), item);
-                }
             }
-
-
+            map = StringUtil.getUniqueItemFromSessionCart(cartItems);
         }
         model.addAttribute("itemAddedToCart", map);
         model.addAttribute("totalPriceOfAddedItems", StringUtil.df.format((totalPriceOfAddedItems)));

@@ -124,4 +124,10 @@ public class UserService  implements UserDetailsService {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
     }
+
+    public User findUserByUserName(String userName) {
+        List<User> users = userRepository.findByUsername(userName);
+        if(!users.isEmpty()) return users.get(0);
+        return null;
+    }
 }

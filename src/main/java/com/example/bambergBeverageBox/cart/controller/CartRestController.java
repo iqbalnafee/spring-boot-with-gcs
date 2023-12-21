@@ -2,14 +2,21 @@ package com.example.bambergBeverageBox.cart.controller;
 
 import com.example.bambergBeverageBox.beverage.model.BeverageSessionResponse;
 import com.example.bambergBeverageBox.bottle.model.BottleResponse;
+import com.example.bambergBeverageBox.cart.model.UserOrderPaymentResponse;
+import com.example.bambergBeverageBox.cart.service.CartModelService;
+import com.example.bambergBeverageBox.order.model.OrderCreationResponse;
 import com.example.bambergBeverageBox.rest.RestResponse;
+import com.example.bambergBeverageBox.user.model.UserCreationResponse;
+import com.example.bambergBeverageBox.user.model.UserSignUpAddRequest;
 import com.example.bambergBeverageBox.util.StringUtil;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +29,7 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CartRestController {
 
+    private final CartModelService cartModelService;
 
     @GetMapping(value = "/setCartSessionData")
     public RestResponse<?> setCartSessionData(
@@ -39,5 +47,7 @@ public class CartRestController {
             return RestResponse.ofError("Can not set cart session data!");
         }
     }
+
+
 
 }

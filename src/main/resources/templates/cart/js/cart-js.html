@@ -3,8 +3,8 @@
     function submitOrder() {
 
 
-        let isAuthenticated= [[${isAuthenticated}]];
-        let totalItemAddedToCart= [[${totalItemAddedToCart}]];
+        let isAuthenticated = [[${isAuthenticated}]];
+        let totalItemAddedToCart = [[${totalItemAddedToCart}]];
 
         if (isAuthenticated !== true) {
             messageDialog('Sorry!', 'You have to log in first to make an order!', 'error', false, 'Ok', 'Ok', () => {
@@ -15,10 +15,40 @@
                 window.location.href = '/';
             }, null);
         } else {
-            messageDialog('Success!', 'Orders placed successfully!', 'success', false, 'Ok', 'Ok', () => {
-                window.location.href = '/orders/view';
-            }, null);
+
+            placeOrder();
         }
+    }
+
+    function placeOrder() {
+        let userOrderPaymentResponse = {
+            fullName: $("#fullName").val(),
+            email: $("#email").val(),
+            street: $("#street").val(),
+            streetNumber: $("#streetNumber").val(),
+            city: $("#city").val(),
+            state: $("#state").val(),
+            postalCode: $("#postalCode").val()
+        };
+
+        showLoader();
+        const url = "/api/order/placeOrder";
+        callAjaxWithAsyncFalse(url, userOrderPaymentResponse, "POST",
+            (data) => {
+                if (data.success) {
+                    messageDialog('Success!', data.message, 'success', false, 'Ok', 'Ok', () => {
+                        window.location.href = '/orders/view';
+                    }, null);
+
+                } else {
+                    messageDialog('Error!', data.message,'error', false, 'Ok' , 'Ok',null,null);
+
+                }
+                hideLoader();
+            }, () => {
+                messageDialog('Error!', 'Can not place order!','error', false, 'Ok' , 'Ok',null,null);
+                hideLoader();
+            });
     }
 
 </script>

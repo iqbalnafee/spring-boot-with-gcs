@@ -1,7 +1,6 @@
 package com.example.bambergBeverageBox.security;
 
 import com.example.bambergBeverageBox.Auth.AuthSuccessHandler;
-import com.example.bambergBeverageBox.Auth.AuthenticationFailureHandler;
 import com.example.bambergBeverageBox.jwt.service.JwtAuthFilter;
 import com.example.bambergBeverageBox.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -29,9 +28,7 @@ public class SecurityConfig {
     public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final AuthSuccessHandler authSuccessHandler;
-    private final AuthenticationFailureHandler authenticationFailureHandler;
     private final UserService userService;
 
     @Autowired
@@ -51,7 +48,7 @@ public class SecurityConfig {
             "/login",
             "/logout",
             "/cart/**",
-            "/api/cart/**",
+            "/api/cart/setCartSessionData",
             "/signIn",
             "/api/login/**",
             "/css/**",

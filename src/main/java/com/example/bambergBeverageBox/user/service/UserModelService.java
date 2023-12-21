@@ -1,5 +1,6 @@
 package com.example.bambergBeverageBox.user.service;
 
+import com.example.bambergBeverageBox.user.model.User;
 import com.example.bambergBeverageBox.user.model.UserCreationResponse;
 import com.example.bambergBeverageBox.user.model.UserSignUpAddRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,5 +18,9 @@ public class UserModelService {
 
     public UserCreationResponse signIn(UserSignUpAddRequest userSignUpAddRequest) {
         return userService.signIn(userSignUpAddRequest);
+    }
+
+    public User findUserByUserName(String userName){
+        return userService.findUserByUserName(userName);
     }
 }

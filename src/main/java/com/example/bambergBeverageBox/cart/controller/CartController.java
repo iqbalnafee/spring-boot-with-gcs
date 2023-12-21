@@ -2,6 +2,7 @@ package com.example.bambergBeverageBox.cart.controller;
 
 import com.example.bambergBeverageBox.annotations.TitleAndContent;
 import com.example.bambergBeverageBox.base.MVCController;
+import com.example.bambergBeverageBox.cart.service.CartModelService;
 import com.example.bambergBeverageBox.enums.Menu;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CartController extends MVCController {
 
-
+    private final CartModelService cartModelService;
     @GetMapping(value = "/view")
     @TitleAndContent(title = "View Cart", content = "cart/view", activeMenu = Menu.CART)
     public String add(
@@ -27,6 +28,7 @@ public class CartController extends MVCController {
     ) {
         setTotalItemCountToCartFromSession(model,session,authentication);
         getItemFromSessionCart(model,session);
+        cartModelService.getUserCartPaymentModel(model);
         return viewRoot;
     }
 
