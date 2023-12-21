@@ -22,10 +22,14 @@ public class MVCController {
         else model.addAttribute("totalItemAddedToCart", 0);
 
         model.addAttribute("isAuthenticated", false);
+        model.addAttribute("isAdmin", false);
         if (authentication != null) {
             String username = authentication.getName();
             model.addAttribute("username", username);
             model.addAttribute("isAuthenticated", true);
+            if(username.equals("admin")){
+                model.addAttribute("isAdmin", true);
+            }
         }
 
 

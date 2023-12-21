@@ -1,4 +1,4 @@
-<li
+<li th:if="${isAdmin != null && isAdmin == true}"  sec:authorize="hasRole('ROLE_ADMIN')"
     th:classappend="${ menuPath != null and menuPath.contains(Menu.BEVERAGE)? 'menu-item-here menu-item-open':'' }"
     class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <th:block th:with="menuName = 'Beverage'">
