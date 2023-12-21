@@ -1,0 +1,12 @@
+<li
+        th:classappend="${ menuPath != null and menuPath.contains(Menu.ORDERS)? 'menu-item-here menu-item-open':'' }"
+        class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a th:href="@{/orders/view}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <img class="menu-logo" th:src="@{/images/side-menu-icons/icon_dia_3.svg}" alt=""/>
+                            </span>
+            <span class="menu-text"> Orders </span>
+        </a>
+
+
+</li>

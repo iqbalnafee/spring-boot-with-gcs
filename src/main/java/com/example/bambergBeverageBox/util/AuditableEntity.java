@@ -21,7 +21,7 @@ public abstract class AuditableEntity {
     @ToString.Exclude
     @CreatedDate
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @ToString.Exclude
     @CreatedBy
@@ -31,7 +31,7 @@ public abstract class AuditableEntity {
     @ToString.Exclude
     @LastModifiedDate
     @Column(name = "modified_date")
-    private LocalDateTime modifiedDate;
+    private LocalDateTime modifiedDate = LocalDateTime.now();;
 
     @ToString.Exclude
     @LastModifiedBy

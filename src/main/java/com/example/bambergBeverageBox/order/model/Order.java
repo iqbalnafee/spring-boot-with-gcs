@@ -25,6 +25,9 @@ public class Order extends AuditableEntity {
     @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "address_id")
+    private Long addressId;
+
     @Column(name = "total_price")
     private Double totalPrice;
 }

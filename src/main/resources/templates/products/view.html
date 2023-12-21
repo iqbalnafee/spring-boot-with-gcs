@@ -21,15 +21,12 @@
                 th:object="${beverageResponse.bottleResponse}"
                 th:with="rowDataJsonString=${T(com.example.bambergBeverageBox.util.StringUtil).toJsonString(beverageResponse)}">
 
-            <!--<th:block th:each="beverageResponse, stat: ${productResponse.beverageResponseList}"
-                  th:object="${beverageResponse.bottleResponse}">-->
-
             <div  class="col-md-3 col-sm-6 item jsonData" >
                 <div class="card shadow p-3 mb-5 bg-white rounded card-div item-card ">
                     <img class="card-img-top card-image" th:src="*{bottlePic}" alt="image"
                          style="width:100%">
                     <div class="card-body">
-                        <h6 class="center-item" th:text="*{price + ' €'}">Price</h6>
+                        <h6 class="center-item" th:text="*{price + '€'}">Price</h6>
                         <h5 class="center-item" th:text="*{bottleNameEn}">Name</h5>
                         <h5 class="center-item mt-1" style="color: red;font-size: medium;" th:text="*{inStock}">Stock</h5>
 
